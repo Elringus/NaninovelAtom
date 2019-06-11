@@ -1,7 +1,7 @@
 {
   "name": "naninovel",
   "main": "./lib/language-nani-script",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "IDE support for naninovel scripts — scenario scripts for Naninovel visual novel engine.",
   "keywords": [
     "language",
