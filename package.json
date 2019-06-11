@@ -1,0 +1,52 @@
+{
+  "name": "naninovel",
+  "main": "./lib/language-nani-script",
+  "version": "0.0.0",
+  "description": "IDE support for naninovel scripts — scenario scripts for Naninovel visual novel engine.",
+  "keywords": [
+    "language",
+    "grammar"
+  ],
+  "activationCommands": {
+    "atom-workspace": "language-nani-script:toggle"
+  },
+  "repository": "https://github.com/Elringus/NaninovelAtom",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0"
+  },
+  "enhancedScopes": [
+    "source.nani"
+  ],
+  "dependencies": {
+    "atom-languageclient": "0.9.9"
+  },
+  "package-deps": [
+    "atom-ide-ui",
+    "autosave-onchange"
+  ],
+  "consumedServices": {
+    "linter-indie": {
+      "versions": {
+        "2.0.0": "consumeLinterV2"
+      }
+    },
+    "datatip": {
+      "versions": {
+        "0.1.0": "consumeDatatip"
+      }
+    }
+  },
+  "providedServices": {
+    "code-highlight": {
+      "versions": {
+        "0.0.0": "provideCodeHighlight"
+      }
+    },
+    "outline-view": {
+      "versions": {
+        "0.0.0": "provideOutlines"
+      }
+    }
+  }
+}

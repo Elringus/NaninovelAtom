@@ -1,0 +1,2754 @@
+﻿{
+  "commands": [
+    {
+      "id": "AppendText",
+      "alias": "append",
+      "localizable": true,
+      "summary": "Appends provided text to an active printer.",
+      "params": [
+        {
+          "id": "Text",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "The text to append."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "ArrangeCharacters",
+      "alias": "arrange",
+      "localizable": false,
+      "summary": "Arranges specified characters by X-axis.  When no parameters provided, will execute an auto-arrange evenly distributing visible characters by X-axis.",
+      "params": [
+        {
+          "id": "CharacterPositions",
+          "nameless": true,
+          "required": false,
+          "dataType": {
+            "kind": "map",
+            "contentType": "float"
+          },
+          "summary": "A collection of character ID to scene X-axis position (relative to the left screen border, in percents) named values.  Position 0 relates to the left border and 100 to the right border of the screen; 50 is the center."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "ModifyBackground",
+      "alias": "back",
+      "localizable": false,
+      "summary": "Modifies a [background actor](/guide/backgrounds.md).",
+      "params": [
+        {
+          "id": "AppearanceAndTransition",
+          "nameless": true,
+          "required": false,
+          "dataType": {
+            "kind": "namedLiteral",
+            "contentType": "string"
+          },
+          "summary": "Appearance to set for the modified background and name of the [transition effect](/guide/background-transition-effects.md) to use.  When transition is not provided, a cross-fade effect will be used by default."
+        },
+        {
+          "id": "TransitionParams",
+          "alias": "params",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Parameters of the transition effect."
+        },
+        {
+          "id": "CustomDissolveTexturePath",
+          "alias": "dissolve",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Path to the [custom dissolve](/guide/background-transition-effects.md#custom-transition-effects) texture (path should be relative to a `Resources` folder).  Has effect only when the transition is set to `Custom` mode."
+        },
+        {
+          "id": "Id",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the actor to modify."
+        },
+        {
+          "id": "Appearance",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Appearance to set for the modified actor."
+        },
+        {
+          "id": "ScenePosition",
+          "alias": "pos",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Position (relative to the screen borders, in percents) to set for the modified actor.  Position is described as follows: `0,0` is the bottom left, `50,50` is the center and `100,100` is the top right corner of the screen."
+        },
+        {
+          "id": "Scale",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Scale to set for the modified actor."
+        },
+        {
+          "id": "Position",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Position (in world space) to set for the modified actor."
+        },
+        {
+          "id": "IsVisible",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Visibility status to set for the modified actor."
+        },
+        {
+          "id": "Rotation",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Rotation to set for the modified actor."
+        },
+        {
+          "id": "TintColor",
+          "alias": "tint",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Tint color to set for the modified actor.  <br /><br />  Strings that begin with `#` will be parsed as hexadecimal in the following way:  `#RGB` (becomes RRGGBB), `#RRGGBB`, `#RGBA` (becomes RRGGBBAA), `#RRGGBBAA`; when alpha is not specified will default to FF.  <br /><br />  Strings that do not begin with `#` will be parsed as literal colors, with the following supported:  red, cyan, blue, darkblue, lightblue, purple, yellow, lime, fuchsia, white, silver, grey, black, orange, brown, maroon, green, olive, navy, teal, aqua, magenta."
+        },
+        {
+          "id": "EasingTypeName",
+          "alias": "easing",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Name of the easing function to use for the modification.  <br /><br />  Available options: Linear, SmoothStep, Spring, EaseInQuad, EaseOutQuad, EaseInOutQuad, EaseInCubic, EaseOutCubic, EaseInOutCubic, EaseInQuart, EaseOutQuart, EaseInOutQuart, EaseInQuint, EaseOutQuint, EaseInOutQuint, EaseInSine, EaseOutSine, EaseInOutSine, EaseInExpo, EaseOutExpo, EaseInOutExpo, EaseInCirc, EaseOutCirc, EaseInOutCirc, EaseInBounce, EaseOutBounce, EaseInOutBounce, EaseInBack, EaseOutBack, EaseInOutBack, EaseInElastic, EaseOutElastic, EaseInOutElastic.  <br /><br />  When not specified, will use a default easing function set in the actor's manager configuration settings."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "PlayBgm",
+      "alias": "bgm",
+      "localizable": false,
+      "summary": "Plays or modifies currently played BGM (background music) track with the provided name.",
+      "params": [
+        {
+          "id": "BgmPath",
+          "nameless": true,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Path to the music track to play."
+        },
+        {
+          "id": "Volume",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Volume of the music track."
+        },
+        {
+          "id": "Loop",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether to play the track from beginning when it finishes."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "AppendLineBreak",
+      "alias": "br",
+      "localizable": false,
+      "summary": "Adds a line break to the text in active printer.",
+      "params": [
+        {
+          "id": "Count",
+          "nameless": true,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "int"
+          },
+          "summary": "Number of line breaks to add."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "ModifyCamera",
+      "alias": "camera",
+      "localizable": false,
+      "summary": "Modifies the main camera, changing offset, zoom level and rotation over time.  Check [this video](https://youtu.be/zy28jaMss8w) for a quick demonstration of the command effect.",
+      "params": [
+        {
+          "id": "Offset",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Local camera position offset in units by X and Y axis."
+        },
+        {
+          "id": "Rotation",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Local camera rotation by Z-axis in angle degrees (0.0 to 360.0 or -180.0 to 180.0)."
+        },
+        {
+          "id": "Zoom",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Relatize camera zoom (orthographic size scale), in 0.0 to 1.0 range."
+        },
+        {
+          "id": "ToggleTypeNames",
+          "alias": "toggle",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "string"
+          },
+          "summary": "Names of the components to toggle (enable if disabled and vice-versa). The components should be attached to the same gameobject as the camera.  This can be used to toggle [custom post-processing effects](/guide/special-effects.md#camera-effects)."
+        },
+        {
+          "id": "EasingTypeName",
+          "alias": "easing",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Name of the easing function to use for the modification.  <br /><br />  Available options: Linear, SmoothStep, Spring, EaseInQuad, EaseOutQuad, EaseInOutQuad, EaseInCubic, EaseOutCubic, EaseInOutCubic, EaseInQuart, EaseOutQuart, EaseInOutQuart, EaseInQuint, EaseOutQuint, EaseInOutQuint, EaseInSine, EaseOutSine, EaseInOutSine, EaseInExpo, EaseOutExpo, EaseInOutExpo, EaseInCirc, EaseOutCirc, EaseInOutCirc, EaseInBounce, EaseOutBounce, EaseInOutBounce, EaseInBack, EaseOutBack, EaseInOutBack, EaseInElastic, EaseOutElastic, EaseInOutElastic.  <br /><br />  When not specified, will use a default easing function set in the camera configuration settings."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "ModifyCharacter",
+      "alias": "char",
+      "localizable": false,
+      "summary": "Modifies a [character actor](/guide/characters.md).",
+      "params": [
+        {
+          "id": "IdAndAppearance",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "namedLiteral",
+            "contentType": "string"
+          },
+          "summary": "ID of the actor to modify and the appearance to set.  When appearance is not provided, will use either a `Default` (is exists) or a random one."
+        },
+        {
+          "id": "LookDirection",
+          "alias": "look",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Look direction of the actor; possible options: left, right, center."
+        },
+        {
+          "id": "AvatarTexturePath",
+          "alias": "avatar",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Name (path) of the [avatar texture](/guide/characters.md#avatar-textures) to assign for the character.  Use `none` to remove (un-assign) avatar texture from the character."
+        },
+        {
+          "id": "Id",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the actor to modify."
+        },
+        {
+          "id": "Appearance",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Appearance to set for the modified actor."
+        },
+        {
+          "id": "ScenePosition",
+          "alias": "pos",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Position (relative to the screen borders, in percents) to set for the modified actor.  Position is described as follows: `0,0` is the bottom left, `50,50` is the center and `100,100` is the top right corner of the screen."
+        },
+        {
+          "id": "Scale",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Scale to set for the modified actor."
+        },
+        {
+          "id": "Position",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Position (in world space) to set for the modified actor."
+        },
+        {
+          "id": "IsVisible",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Visibility status to set for the modified actor."
+        },
+        {
+          "id": "Rotation",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Rotation to set for the modified actor."
+        },
+        {
+          "id": "TintColor",
+          "alias": "tint",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Tint color to set for the modified actor.  <br /><br />  Strings that begin with `#` will be parsed as hexadecimal in the following way:  `#RGB` (becomes RRGGBB), `#RRGGBB`, `#RGBA` (becomes RRGGBBAA), `#RRGGBBAA`; when alpha is not specified will default to FF.  <br /><br />  Strings that do not begin with `#` will be parsed as literal colors, with the following supported:  red, cyan, blue, darkblue, lightblue, purple, yellow, lime, fuchsia, white, silver, grey, black, orange, brown, maroon, green, olive, navy, teal, aqua, magenta."
+        },
+        {
+          "id": "EasingTypeName",
+          "alias": "easing",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Name of the easing function to use for the modification.  <br /><br />  Available options: Linear, SmoothStep, Spring, EaseInQuad, EaseOutQuad, EaseInOutQuad, EaseInCubic, EaseOutCubic, EaseInOutCubic, EaseInQuart, EaseOutQuart, EaseInOutQuart, EaseInQuint, EaseOutQuint, EaseInOutQuint, EaseInSine, EaseOutSine, EaseInOutSine, EaseInExpo, EaseOutExpo, EaseInOutExpo, EaseInCirc, EaseOutCirc, EaseInOutCirc, EaseInBounce, EaseOutBounce, EaseInOutBounce, EaseInBack, EaseOutBack, EaseInOutBack, EaseInElastic, EaseOutElastic, EaseInOutElastic.  <br /><br />  When not specified, will use a default easing function set in the actor's manager configuration settings."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "AddChoice",
+      "alias": "choice",
+      "localizable": true,
+      "summary": "Adds a choice option to an active (or default) choice handler actor.",
+      "params": [
+        {
+          "id": "ChoiceSummary",
+          "nameless": true,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Text to show for the choice.  When the text contain spaces, wrap it in double quotes (`\"`).  In case you wish to include the double quotes in the text itself, escape them."
+        },
+        {
+          "id": "ButtonPath",
+          "alias": "button",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Path (relative to a `Resources` folder) to a [button prefab](/guide/choices.md#choice-button) representing the choice.  The prefab should have a `ChoiceHandlerButton` component attached to the root object.  Will use a default button when not provided."
+        },
+        {
+          "id": "ButtonPosition",
+          "alias": "pos",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Local position of the choice button inside the choice handler (if supported by the handler implementation)."
+        },
+        {
+          "id": "HandlerId",
+          "alias": "handler",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the choice handler to add choice for."
+        },
+        {
+          "id": "GotoPath",
+          "alias": "goto",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "namedLiteral",
+            "contentType": "string"
+          },
+          "summary": "Path to go when the choice is selected by user;  See [`@goto`](/api/#goto) command for the path format."
+        },
+        {
+          "id": "SetExpression",
+          "alias": "set",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Set expression to execute when the choice is selected by user;  see [`@set`](/api/#set) command for syntax reference."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "ClearBacklog",
+      "localizable": false,
+      "summary": "Removes all the messages from [printer backlog](/guide/printer-backlog.md).",
+      "params": [
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "DestroySpawned",
+      "alias": "despawn",
+      "localizable": false,
+      "summary": "Destroys object spawned with [`@spawn`](/api/#spawn) command.",
+      "params": [
+        {
+          "id": "Path",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Path to the prefab resource to destroy. Path is relative to a `./Resources` folder, eg  given a `Assets/Resources/FX/Explosion.prefab` asset, use the following path to spawn it: `FX/Explosion`.  A [`@spawn`](/api/#spawn) command with the same path is expected to be executed before."
+        },
+        {
+          "id": "Params",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "string"
+          },
+          "summary": "Parameters to set before destoying the prefab.  Requires the prefab to have a `Naninovel.Commands.DestroySpawned.IParameterized` component attached the root object."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "Else",
+      "localizable": false,
+      "summary": "Marks a branch of a conditional execution block,  which is always executed in case conditions of the opening [`@if`](/api/#if) and all the preceding [`@elseif`](/api/#elseif) (if any) commands are not met.  For usage examples see [conditional execution](/guide/naninovel-scripts.md#conditional-execution) guide.",
+      "params": [
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "ElseIf",
+      "localizable": false,
+      "summary": "Marks a branch of a conditional execution block,  which is executed in case own condition is met (expression is evaluated to be true), while conditions of the opening [`@if`](/api/#if)  and all the preceding [`@elseif`](/api/#elseif) (if any) commands are not met.  For usage examples see [conditional execution](/guide/naninovel-scripts.md#conditional-execution) guide.",
+      "params": [
+        {
+          "id": "Expression",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A [script expression](/guide/script-expressions.md), which should return a boolean value."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "EndIf",
+      "localizable": false,
+      "summary": "Closes an [`@if`](/api/#if) conditional execution block.  For usage examples see [conditional execution](/guide/naninovel-scripts.md#conditional-execution) guide.",
+      "params": [
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "SpawnFx",
+      "alias": "fx",
+      "localizable": false,
+      "summary": "Spawns a [special effect](/guide/special-effects.md) prefab stored in `./Resources/Naninovel/FX` resources folder.",
+      "params": [
+        {
+          "id": "Path",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Path to the prefab resource to spawn. Path is relative to a `./Resources` folder, eg  given a `Assets/Resources/FX/Explosion.prefab` asset, use the following path to spawn it: `FX/Explosion`."
+        },
+        {
+          "id": "Params",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "string"
+          },
+          "summary": "Parameters to set when spawning the prefab.  Requires the prefab to have a `Naninovel.Commands.Spawn.IParameterized` component attached the root object."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "Gosub",
+      "localizable": false,
+      "summary": "Jumps the naninovel script playback to the provided path and saves the path to the global state;  [`@return`](/api/#return) commands use this info to redirect to command after the last invoked gosub command.  Resembles a function (subroutine) in a programming language, allowing to reuse a piece of naninovel script.  Useful for invoking a repeating set of commands multiple times.",
+      "params": [
+        {
+          "id": "Path",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "namedLiteral",
+            "contentType": "string"
+          },
+          "summary": "Path to jump into in the following format: `ScriptName.LabelName`.  When label name is ommited, will play provided script from the start.  When script name is ommited, will attempt to find a label in the currently played script."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "Goto",
+      "localizable": false,
+      "summary": "Jumps the naninovel script playback to the provided path.  When the path leads to another (not the currently played) naninovel script, will also [reset state](/api/#resetstate)  before loading the target script, unless [ResetStateOnLoad](https://naninovel.com/guide/configuration.html#state) is disabled in the configuration.",
+      "params": [
+        {
+          "id": "Path",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "namedLiteral",
+            "contentType": "string"
+          },
+          "summary": "Path to jump into in the following format: `ScriptName.LabelName`.  When label name is ommited, will play provided script from the start.  When script name is ommited, will attempt to find a label in the currently played script."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "HideActor",
+      "alias": "hide",
+      "localizable": false,
+      "summary": "Hides (removes from scene) an actor with provided ID.",
+      "params": [
+        {
+          "id": "ActorName",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the actor to hide."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "HideAllActors",
+      "alias": "hideAll",
+      "localizable": false,
+      "summary": "Hides (removes) all the actors (eg characters, backgrounds, text printers, choice handlers, etc) on scene.",
+      "params": [
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "HideAllCharacters",
+      "alias": "hideChars",
+      "localizable": false,
+      "summary": "Hides (removes) all the visible characters on scene.",
+      "params": [
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "HideText",
+      "localizable": false,
+      "summary": "Hides an active printer.",
+      "params": [
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "HideUI",
+      "localizable": false,
+      "summary": "Makes a [managed UI](/guide/ui-customization.md) with the provided prefab name invisible.",
+      "params": [
+        {
+          "id": "UIPrefabName",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Name of the managed UI prefab to hide."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "WaitForInput",
+      "alias": "i",
+      "localizable": false,
+      "summary": "Holds script execution until user activates a `continue` input.  Shortcut for `@wait input`.",
+      "params": [
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "BeginIf",
+      "alias": "if",
+      "localizable": false,
+      "summary": "Marks the beginning of a conditional execution block.  Should always be closed with an [`@endif`](/api/#endif) command.  For usage examples see [conditional execution](/guide/naninovel-scripts.md#conditional-execution) guide.",
+      "params": [
+        {
+          "id": "Expression",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A [script expression](/guide/script-expressions.md), which should return a boolean value."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "InputCustomVariable",
+      "alias": "input",
+      "localizable": true,
+      "summary": "Shows an input field UI where user can enter an arbitrary text.  Upon submit the entered text will be assigned to the specified custom variable.",
+      "params": [
+        {
+          "id": "VariableName",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Name of a custom variable to which the entered text will be assigned."
+        },
+        {
+          "id": "Summary",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "An optional summary text to show along with input field.  When the text contain spaces, wrap it in double quotes (`\"`).  In case you wish to include the double quotes in the text itself, escape them."
+        },
+        {
+          "id": "PlayOnSubmit",
+          "alias": "play",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether to automatically resume script playback when user submits the input form."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "Lock",
+      "localizable": false,
+      "summary": "Sets an [unlockable item](/guide/unlockable-items.md) with the provided ID to `locked` state.",
+      "params": [
+        {
+          "id": "Id",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the unlockable item. Use `all` to lock all the registered unlockable items."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "PlayMovie",
+      "alias": "movie",
+      "localizable": false,
+      "summary": "Playes a movie with the provided name (path).",
+      "params": [
+        {
+          "id": "MovieName",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Name of the movie resource to play."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "PrintText",
+      "alias": "print",
+      "localizable": true,
+      "summary": "Resets the active printer, prints text message and waits for user input.",
+      "params": [
+        {
+          "id": "Text",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Text of the message to print.  When the text contain spaces, wrap it in double quotes (`\"`).  In case you wish to include the double quotes in the text itself, escape them."
+        },
+        {
+          "id": "PrinterId",
+          "alias": "printer",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the printer actor to use."
+        },
+        {
+          "id": "ActorId",
+          "alias": "actor",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the actor, which should be associated with the printed message."
+        },
+        {
+          "id": "ResetPrinter",
+          "alias": "reset",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether to reset text of the printer before executing the printing task."
+        },
+        {
+          "id": "WaitForInput",
+          "alias": "waitInput",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether to wait for user input after finishing the printing task."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "SetActivePrinter",
+      "alias": "printer",
+      "localizable": false,
+      "summary": "Sets printer with the provided ID active and de-activates all the others.",
+      "params": [
+        {
+          "id": "PrinterId",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the printer to activate."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "ProcessInput",
+      "localizable": false,
+      "summary": "Allows halting and resuming user input processing (eg, reacting to pressing keyboard keys).  The effect of the action is persistent and saved with the game.",
+      "params": [
+        {
+          "id": "InputEnabled",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether to enable input processing."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "ResetState",
+      "localizable": false,
+      "summary": "Resets state of all the [engine services](https://naninovel.com/guide/engine-services.html) and unloads (disposes)  all the resources loaded by Naninovel (textures, audio, video, etc); will basically revert to an empty initial engine state.",
+      "params": [
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "ResetText",
+      "localizable": false,
+      "summary": "Clears printed text of active printer.",
+      "params": [
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "Return",
+      "localizable": false,
+      "summary": "Attempts to jump the naninovel script playback to the command after the last used @gosub.  When the target command is not in the currently played script, will also [reset state](/api/#resetstate)  before loading the target script, unless [ResetStateOnLoad](https://naninovel.com/guide/configuration.html#state) is disabled in the configuration.  See [`@gosub`](/api/#gosub) command summary for more info and usage examples.",
+      "params": [
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "AutoSave",
+      "alias": "save",
+      "localizable": false,
+      "summary": "Automatically save the game to a quick save slot.",
+      "params": [
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "SetCustomVariable",
+      "alias": "set",
+      "localizable": false,
+      "summary": "Assigns result of a [script expression](/guide/script-expressions.md) to a [custom variable](/guide/custom-variables.md).",
+      "params": [
+        {
+          "id": "Expression",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Set expression.  <br /><br />  The expression should be in the following format: `VariableName=ExpressionBody`, where `VariableName` is the name of the custom  variable to assign and `ExpressionBody` is a [script expression](/guide/script-expressions.md), the result of which should be assigned to the variable."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "PlaySfx",
+      "alias": "sfx",
+      "localizable": false,
+      "summary": "Plays or modifies currently played SFX (sound effect) track with the provided name.",
+      "params": [
+        {
+          "id": "SfxPath",
+          "nameless": true,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Path to the sound effect asset to play."
+        },
+        {
+          "id": "Volume",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Volume of the sound effect."
+        },
+        {
+          "id": "Loop",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether to play the sound effect in a loop."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "ShowText",
+      "localizable": false,
+      "summary": "Shows an active or default text printer.",
+      "params": [
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "ShowUI",
+      "localizable": false,
+      "summary": "Makes a [managed UI](/guide/ui-customization.md) with the provided prefab name visible.",
+      "params": [
+        {
+          "id": "UIPrefabName",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Name of the managed UI prefab to make visible."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "SkipNextWaitForInput",
+      "alias": "skipInput",
+      "localizable": false,
+      "summary": "Next call to `Naninovel.ScriptPlayer.EnableWaitingForInput` will be ignored.",
+      "params": [
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "Spawn",
+      "localizable": false,
+      "summary": "Spawns a prefab stored in project resources.",
+      "params": [
+        {
+          "id": "Path",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Path to the prefab resource to spawn. Path is relative to a `./Resources` folder, eg  given a `Assets/Resources/FX/Explosion.prefab` asset, use the following path to spawn it: `FX/Explosion`."
+        },
+        {
+          "id": "Params",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "string"
+          },
+          "summary": "Parameters to set when spawning the prefab.  Requires the prefab to have a `Naninovel.Commands.Spawn.IParameterized` component attached the root object."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "Stop",
+      "localizable": false,
+      "summary": "Stops the naninovel script execution.",
+      "params": [
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "StopBgm",
+      "localizable": false,
+      "summary": "Stops playing a BGM (background music) track with the provided name.",
+      "params": [
+        {
+          "id": "BgmPath",
+          "nameless": true,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Path to the music track to stop."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "DestroySpawnedFx",
+      "alias": "stopFx",
+      "localizable": false,
+      "summary": "Stops [special effect](/guide/special-effects.md) started with [`@fx`](/api/#fx) command by destroying spawned object of the corresponding FX prefab.",
+      "params": [
+        {
+          "id": "Path",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Path to the prefab resource to destroy. Path is relative to a `./Resources` folder, eg  given a `Assets/Resources/FX/Explosion.prefab` asset, use the following path to spawn it: `FX/Explosion`.  A [`@spawn`](/api/#spawn) command with the same path is expected to be executed before."
+        },
+        {
+          "id": "Params",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "string"
+          },
+          "summary": "Parameters to set before destoying the prefab.  Requires the prefab to have a `Naninovel.Commands.DestroySpawned.IParameterized` component attached the root object."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "StopSfx",
+      "localizable": false,
+      "summary": "Stops playing an SFX (sound effect) track with the provided name.",
+      "params": [
+        {
+          "id": "SfxPath",
+          "nameless": true,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Path to the sound effect to stop."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "StopVoice",
+      "localizable": false,
+      "summary": "Stops playback of the currently played voice clip.",
+      "params": [
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "SetTextStyle",
+      "alias": "style",
+      "localizable": false,
+      "summary": "Applies text style to the active printer.",
+      "params": [
+        {
+          "id": "TextStyles",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "array",
+            "contentType": "string"
+          },
+          "summary": "Text formatting styles to apply.  Possible options: color hex code (eg, #ffaa00), bold, italic, px text size (eg 45)."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "ExitToTitle",
+      "alias": "title",
+      "localizable": false,
+      "summary": "Loads default engine state and shows `Naninovel.UI.ITitleUI`.",
+      "params": [
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "Unlock",
+      "localizable": false,
+      "summary": "Sets an [unlockable item](/guide/unlockable-items.md) with the provided ID to `unlocked` state.",
+      "params": [
+        {
+          "id": "Id",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the unlockable item. Use `all` to unlock all the registered unlockable items."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "PlayVoice",
+      "alias": "voice",
+      "localizable": false,
+      "summary": "Plays a voice clip at the provided path.",
+      "params": [
+        {
+          "id": "VoicePath",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Path to the voice clip to play."
+        },
+        {
+          "id": "Volume",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Volume of the playback."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "Wait",
+      "localizable": false,
+      "summary": "Holds script execution until the specified wait condition.",
+      "params": [
+        {
+          "id": "WaitMode",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Wait conditions:<br />  - `i` user press continue or skip input key;<br />  - `0.0` timer (seconds);<br />  - `i0.0` timer, that is skippable by continue or skip input keys."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Holds script execution until the specified wait condition."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](/guide/script-expressions.md), controlling whether this command should execute."
+        }
+      ]
+    }
+  ]
+}
