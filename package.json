@@ -18,7 +18,7 @@
     "atom": ">=1.0.0"
   },
   "enhancedScopes": [
-    "source.nani"
+    "source.naniscript"
   ],
   "dependencies": {
     "atom-languageclient": "0.9.9"
