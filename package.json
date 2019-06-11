@@ -4,8 +4,10 @@
   "version": "0.3.0",
   "description": "IDE support for naniscript — scenario scripting langauge for Naninovel visual novel engine.",
   "keywords": [
+    "naninovel",
     "language",
-    "grammar"
+    "grammar",
+    "syntax"
   ],
   "activationCommands": {
     "atom-workspace": "language-naniscript:toggle"
@@ -19,8 +21,7 @@
     "source.nani"
   ],
   "dependencies": {
-    "atom-languageclient": "0.9.9",
-    "naninovel-grammar": ">=0.0.3"
+    "atom-languageclient": "0.9.9"
   },
   "package-deps": [
     "atom-ide-ui",
