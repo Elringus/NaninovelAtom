@@ -21,8 +21,7 @@
     "source.naniscript"
   ],
   "dependencies": {
-    "atom-languageclient": "0.9.9",
-    "tree-sitter-naninovel": "^0.0.4"
+    "atom-languageclient": "0.9.9"
   },
   "package-deps": [
     "atom-ide-ui",
