@@ -8,7 +8,7 @@
           "submenu": [
             {
               "label": "Toggle",
-              "command": "language-nani-script:toggle"
+              "command": "language-naniscript:toggle"
             }
           ]
         }

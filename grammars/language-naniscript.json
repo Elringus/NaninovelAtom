@@ -1,8 +1,8 @@
 {
-  "name": "nani_script",
+  "name": "Naniscript",
   "scopeName": "source.nani",
   "type": "tree-sitter",
-  "parser": "nani_script",
+  "parser": "naninovel-grammar",
 
   "fileTypes": ["nani"],
 
