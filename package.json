@@ -1,7 +1,7 @@
 {
   "name": "language-naniscript",
   "main": "./lib/language-naniscript",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "IDE support for naniscript — scenario scripting langauge for Naninovel visual novel engine.",
   "keywords": [
     "naninovel",
