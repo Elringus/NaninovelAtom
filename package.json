@@ -39,12 +39,12 @@
   "providedServices": {
     "code-highlight": {
       "versions": {
-        "0.0.0": "provideCodeHighlight"
+        "0.1.0": "provideCodeHighlight"
       }
     },
     "outline-view": {
       "versions": {
-        "0.0.0": "provideOutlines"
+        "0.1.0": "provideOutlines"
       }
     }
   }
