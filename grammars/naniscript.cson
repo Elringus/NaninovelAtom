@@ -1,0 +1,15 @@
+name: 'Naniscript'
+scopeName: 'source.naniscript'
+
+fileTypes: [
+  'nani'
+]
+
+scopes:
+  'label_name': 'constant'
+  'comment': 'comment'
+  'define_name': 'variable'
+  'define_val': 'constant'
+  'command_name': 'entity.name.function'
+  'named_arg': 'variable.name'
+  'unnamed_arg': 'meta.class'
