@@ -1,17 +1,14 @@
 {
   "name": "language-naniscript",
-  "main": "./lib/language-naniscript",
+  "main": "./lib/main",
   "version": "0.11.0",
-  "description": "IDE support for naniscript — scenario scripting langauge for Naninovel visual novel engine.",
+  "description": "Grammar and IDE support for NaniScript — scenario scripting langauge for Naninovel visual novel engine.",
   "keywords": [
     "naninovel",
     "language",
     "grammar",
     "syntax"
   ],
-  "activationCommands": {
-    "atom-workspace": "language-naniscript:toggle"
-  },
   "repository": "https://github.com/Elringus/NaninovelAtom",
   "license": "MIT",
   "engines": {
