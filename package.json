@@ -5,9 +5,9 @@
   "description": "Grammar and IDE support for NaniScript — scenario scripting langauge for Naninovel visual novel engine.",
   "keywords": [
     "naninovel",
-    "language",
     "grammar",
-    "syntax"
+    "syntax",
+    "ide"
   ],
   "repository": "https://github.com/Elringus/NaninovelAtom",
   "license": "MIT",
