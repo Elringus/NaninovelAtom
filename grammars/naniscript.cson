@@ -1,7 +1,7 @@
 name: 'NaniScript'
 scopeName: 'source.naniscript'
 type: 'tree-sitter'
-parser: 'naninovel-grammar'
+parser: 'tree-sitter-naninovel'
 
 fileTypes: [
   'nani'
