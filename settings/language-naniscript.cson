@@ -1,0 +1,4 @@
+'.source.naniscript':
+  'editor':
+    'softWrap': true
+    'commentStart': '; '
