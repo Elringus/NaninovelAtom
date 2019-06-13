@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "atom-languageclient": "0.9.9",
-    "naninovel-grammar": "0.0.4",
+    "naninovel-grammar": "0.0.4"
   },
   "package-deps": [
     "atom-ide-ui",
