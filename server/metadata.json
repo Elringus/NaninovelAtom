@@ -46,7 +46,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -96,7 +96,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -104,7 +104,7 @@
       "id": "ModifyBackground",
       "alias": "back",
       "localizable": false,
-      "summary": "Modifies a [background actor](https://naninovel.com/guide/backgrounds.md).",
+      "summary": "Modifies a [background actor](https://naninovel.com/guide/backgrounds.html).",
       "params": [
         {
           "id": "AppearanceAndTransition",
@@ -114,7 +114,7 @@
             "kind": "namedLiteral",
             "contentType": "string"
           },
-          "summary": "Appearance to set for the modified background and name of the [transition effect](https://naninovel.com/guide/background-transition-effects.md) to use.  When transition is not provided, a cross-fade effect will be used by default."
+          "summary": "Appearance to set for the modified background and name of the [transition effect](https://naninovel.com/guide/background-transition-effects.html) to use.  When transition is not provided, a cross-fade effect will be used by default."
         },
         {
           "id": "TransitionParams",
@@ -136,7 +136,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "Path to the [custom dissolve](https://naninovel.com/guide/background-transition-effects.md#custom-transition-effects) texture (path should be relative to a `Resources` folder).  Has effect only when the transition is set to `Custom` mode."
+          "summary": "Path to the [custom dissolve](https://naninovel.com/guide/background-transition-effects.html#custom-transition-effects) texture (path should be relative to a `Resources` folder).  Has effect only when the transition is set to `Custom` mode."
         },
         {
           "id": "Id",
@@ -261,7 +261,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -331,7 +331,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -381,7 +381,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -430,7 +430,7 @@
             "kind": "array",
             "contentType": "string"
           },
-          "summary": "Names of the components to toggle (enable if disabled and vice-versa). The components should be attached to the same gameobject as the camera.  This can be used to toggle [custom post-processing effects](https://naninovel.com/guide/special-effects.md#camera-effects)."
+          "summary": "Names of the components to toggle (enable if disabled and vice-versa). The components should be attached to the same gameobject as the camera.  This can be used to toggle [custom post-processing effects](https://naninovel.com/guide/special-effects.html#camera-effects)."
         },
         {
           "id": "EasingTypeName",
@@ -473,7 +473,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -481,7 +481,7 @@
       "id": "ModifyCharacter",
       "alias": "char",
       "localizable": false,
-      "summary": "Modifies a [character actor](https://naninovel.com/guide/characters.md).",
+      "summary": "Modifies a [character actor](https://naninovel.com/guide/characters.html).",
       "params": [
         {
           "id": "IdAndAppearance",
@@ -513,7 +513,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "Name (path) of the [avatar texture](https://naninovel.com/guide/characters.md#avatar-textures) to assign for the character.  Use `none` to remove (un-assign) avatar texture from the character."
+          "summary": "Name (path) of the [avatar texture](https://naninovel.com/guide/characters.html#avatar-textures) to assign for the character.  Use `none` to remove (un-assign) avatar texture from the character."
         },
         {
           "id": "Id",
@@ -638,7 +638,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -667,7 +667,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "Path (relative to a `Resources` folder) to a [button prefab](https://naninovel.com/guide/choices.md#choice-button) representing the choice.  The prefab should have a `ChoiceHandlerButton` component attached to the root object.  Will use a default button when not provided."
+          "summary": "Path (relative to a `Resources` folder) to a [button prefab](https://naninovel.com/guide/choices.html#choice-button) representing the choice.  The prefab should have a `ChoiceHandlerButton` component attached to the root object.  Will use a default button when not provided."
         },
         {
           "id": "ButtonPosition",
@@ -743,14 +743,14 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
     {
       "id": "ClearBacklog",
       "localizable": false,
-      "summary": "Removes all the messages from [printer backlog](https://naninovel.com/guide/printer-backlog.md).",
+      "summary": "Removes all the messages from [printer backlog](https://naninovel.com/guide/printer-backlog.html).",
       "params": [
         {
           "id": "Wait",
@@ -782,7 +782,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -842,14 +842,14 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
     {
       "id": "Else",
       "localizable": false,
-      "summary": "Marks a branch of a conditional execution block,  which is always executed in case conditions of the opening [`@if`](https://naninovel.com/api/#if) and all the preceding [`@elseif`](https://naninovel.com/api/#elseif) (if any) commands are not met.  For usage examples see [conditional execution](https://naninovel.com/guide/naninovel-scripts.md#conditional-execution) guide.",
+      "summary": "Marks a branch of a conditional execution block,  which is always executed in case conditions of the opening [`@if`](https://naninovel.com/api/#if) and all the preceding [`@elseif`](https://naninovel.com/api/#elseif) (if any) commands are not met.  For usage examples see [conditional execution](https://naninovel.com/guide/naninovel-scripts.html#conditional-execution) guide.",
       "params": [
         {
           "id": "Wait",
@@ -881,14 +881,14 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
     {
       "id": "ElseIf",
       "localizable": false,
-      "summary": "Marks a branch of a conditional execution block,  which is executed in case own condition is met (expression is evaluated to be true), while conditions of the opening [`@if`](https://naninovel.com/api/#if)  and all the preceding [`@elseif`](https://naninovel.com/api/#elseif) (if any) commands are not met.  For usage examples see [conditional execution](https://naninovel.com/guide/naninovel-scripts.md#conditional-execution) guide.",
+      "summary": "Marks a branch of a conditional execution block,  which is executed in case own condition is met (expression is evaluated to be true), while conditions of the opening [`@if`](https://naninovel.com/api/#if)  and all the preceding [`@elseif`](https://naninovel.com/api/#elseif) (if any) commands are not met.  For usage examples see [conditional execution](https://naninovel.com/guide/naninovel-scripts.html#conditional-execution) guide.",
       "params": [
         {
           "id": "Expression",
@@ -898,7 +898,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A [script expression](https://naninovel.com/guide/script-expressions.md), which should return a boolean value."
+          "summary": "A [script expression](https://naninovel.com/guide/script-expressions.html), which should return a boolean value."
         },
         {
           "id": "Wait",
@@ -930,14 +930,14 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
     {
       "id": "EndIf",
       "localizable": false,
-      "summary": "Closes an [`@if`](https://naninovel.com/api/#if) conditional execution block.  For usage examples see [conditional execution](https://naninovel.com/guide/naninovel-scripts.md#conditional-execution) guide.",
+      "summary": "Closes an [`@if`](https://naninovel.com/api/#if) conditional execution block.  For usage examples see [conditional execution](https://naninovel.com/guide/naninovel-scripts.html#conditional-execution) guide.",
       "params": [
         {
           "id": "Wait",
@@ -969,7 +969,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -977,7 +977,7 @@
       "id": "SpawnFx",
       "alias": "fx",
       "localizable": false,
-      "summary": "Spawns a [special effect](https://naninovel.com/guide/special-effects.md) prefab stored in `./Resources/Naninovel/FX` resources folder.",
+      "summary": "Spawns a [special effect](https://naninovel.com/guide/special-effects.html) prefab stored in `./Resources/Naninovel/FX` resources folder.",
       "params": [
         {
           "id": "Path",
@@ -1029,7 +1029,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1078,7 +1078,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1127,7 +1127,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1177,7 +1177,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1217,7 +1217,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1257,7 +1257,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1296,14 +1296,14 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
     {
       "id": "HideUI",
       "localizable": false,
-      "summary": "Makes a [managed UI](https://naninovel.com/guide/ui-customization.md) with the provided prefab name invisible.",
+      "summary": "Makes a [managed UI](https://naninovel.com/guide/ui-customization.html) with the provided prefab name invisible.",
       "params": [
         {
           "id": "UIPrefabName",
@@ -1345,7 +1345,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1385,7 +1385,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1393,7 +1393,7 @@
       "id": "BeginIf",
       "alias": "if",
       "localizable": false,
-      "summary": "Marks the beginning of a conditional execution block.  Should always be closed with an [`@endif`](https://naninovel.com/api/#endif) command.  For usage examples see [conditional execution](https://naninovel.com/guide/naninovel-scripts.md#conditional-execution) guide.",
+      "summary": "Marks the beginning of a conditional execution block.  Should always be closed with an [`@endif`](https://naninovel.com/api/#endif) command.  For usage examples see [conditional execution](https://naninovel.com/guide/naninovel-scripts.html#conditional-execution) guide.",
       "params": [
         {
           "id": "Expression",
@@ -1403,7 +1403,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A [script expression](https://naninovel.com/guide/script-expressions.md), which should return a boolean value."
+          "summary": "A [script expression](https://naninovel.com/guide/script-expressions.html), which should return a boolean value."
         },
         {
           "id": "Wait",
@@ -1435,7 +1435,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1506,14 +1506,14 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
     {
       "id": "Lock",
       "localizable": false,
-      "summary": "Sets an [unlockable item](https://naninovel.com/guide/unlockable-items.md) with the provided ID to `locked` state.",
+      "summary": "Sets an [unlockable item](https://naninovel.com/guide/unlockable-items.html) with the provided ID to `locked` state.",
       "params": [
         {
           "id": "Id",
@@ -1555,7 +1555,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1605,7 +1605,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1699,7 +1699,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1749,7 +1749,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1798,7 +1798,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1837,7 +1837,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1876,7 +1876,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1915,7 +1915,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1955,7 +1955,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -1963,7 +1963,7 @@
       "id": "SetCustomVariable",
       "alias": "set",
       "localizable": false,
-      "summary": "Assigns result of a [script expression](https://naninovel.com/guide/script-expressions.md) to a [custom variable](https://naninovel.com/guide/custom-variables.md).",
+      "summary": "Assigns result of a [script expression](https://naninovel.com/guide/script-expressions.html) to a [custom variable](https://naninovel.com/guide/custom-variables.html).",
       "params": [
         {
           "id": "Expression",
@@ -1973,7 +1973,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "Set expression.  <br /><br />  The expression should be in the following format: `VariableName=ExpressionBody`, where `VariableName` is the name of the custom  variable to assign and `ExpressionBody` is a [script expression](https://naninovel.com/guide/script-expressions.md), the result of which should be assigned to the variable."
+          "summary": "Set expression.  <br /><br />  The expression should be in the following format: `VariableName=ExpressionBody`, where `VariableName` is the name of the custom  variable to assign and `ExpressionBody` is a [script expression](https://naninovel.com/guide/script-expressions.html), the result of which should be assigned to the variable."
         },
         {
           "id": "Wait",
@@ -2005,7 +2005,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -2075,7 +2075,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -2114,14 +2114,14 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
     {
       "id": "ShowUI",
       "localizable": false,
-      "summary": "Makes a [managed UI](https://naninovel.com/guide/ui-customization.md) with the provided prefab name visible.",
+      "summary": "Makes a [managed UI](https://naninovel.com/guide/ui-customization.html) with the provided prefab name visible.",
       "params": [
         {
           "id": "UIPrefabName",
@@ -2163,7 +2163,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -2203,7 +2203,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -2262,7 +2262,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -2301,7 +2301,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -2350,7 +2350,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -2358,7 +2358,7 @@
       "id": "DestroySpawnedFx",
       "alias": "stopFx",
       "localizable": false,
-      "summary": "Stops [special effect](https://naninovel.com/guide/special-effects.md) started with [`@fx`](https://naninovel.com/api/#fx) command by destroying spawned object of the corresponding FX prefab.",
+      "summary": "Stops [special effect](https://naninovel.com/guide/special-effects.html) started with [`@fx`](https://naninovel.com/api/#fx) command by destroying spawned object of the corresponding FX prefab.",
       "params": [
         {
           "id": "Path",
@@ -2410,7 +2410,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -2459,7 +2459,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -2498,7 +2498,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -2548,7 +2548,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -2588,14 +2588,14 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
     {
       "id": "Unlock",
       "localizable": false,
-      "summary": "Sets an [unlockable item](https://naninovel.com/guide/unlockable-items.md) with the provided ID to `unlocked` state.",
+      "summary": "Sets an [unlockable item](https://naninovel.com/guide/unlockable-items.html) with the provided ID to `unlocked` state.",
       "params": [
         {
           "id": "Id",
@@ -2637,7 +2637,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -2697,7 +2697,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     },
@@ -2746,7 +2746,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.md), controlling whether this command should execute."
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
         }
       ]
     }
