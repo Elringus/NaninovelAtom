@@ -5,6 +5,7 @@
       "alias": "append",
       "localizable": true,
       "summary": "Appends provided text to an active printer.",
+      "remarks": "The entire text will be appended immediately, without triggering reveal effect or any other side-effects.",
       "params": [
         {
           "id": "Text",
@@ -105,6 +106,7 @@
       "alias": "back",
       "localizable": false,
       "summary": "Modifies a [background actor](https://naninovel.com/guide/backgrounds.html).",
+      "remarks": "Backgrounds are handled a bit differently from characters. Most of the time we'll only have  one background actor on scene, which will constantly transition to different appearances.  To free the user from always repeating same actor ID in scripts, we allow to  provide only the background appearance and transition type (optional) as a nameless parameter and assume that  `MainBackground` actor should be affected. When this is not the case, ID of the background actor can be explicitly  provided via the `id` parameter.",
       "params": [
         {
           "id": "AppearanceAndTransition",
@@ -270,6 +272,7 @@
       "alias": "bgm",
       "localizable": false,
       "summary": "Plays or modifies currently played BGM (background music) track with the provided name.",
+      "remarks": "Music tracks are looped by default.  When music track name (BgmPath) is not specified, will affect all the currently played tracks.  When invoked for a track that is already playing, the playback won't be affected (track won't start playing from the start),  but the specified parameters (volume and whether the track is looped) will be applied.",
       "params": [
         {
           "id": "BgmPath",
@@ -647,6 +650,7 @@
       "alias": "choice",
       "localizable": true,
       "summary": "Adds a choice option to an active (or default) choice handler actor.",
+      "remarks": "When `goto` parameter is not specified, will continue script execution from the next script line.",
       "params": [
         {
           "id": "ChoiceSummary",
@@ -791,6 +795,7 @@
       "alias": "despawn",
       "localizable": false,
       "summary": "Destroys object spawned with [`@spawn`](https://naninovel.com/api/#spawn) command.",
+      "remarks": "If prefab has a `UnityEngine.MonoBehaviour` component attached the root object, and the component implements  a `Naninovel.Commands.DestroySpawned.IParameterized` interface, will pass the specified `params` values before destroying the object;  if the component implements `Naninovel.Commands.DestroySpawned.IAwaitable` interface, command execution will wait for  the async completion task returned by the implementation before destroying the object.",
       "params": [
         {
           "id": "Path",
@@ -1444,6 +1449,7 @@
       "alias": "input",
       "localizable": true,
       "summary": "Shows an input field UI where user can enter an arbitrary text.  Upon submit the entered text will be assigned to the specified custom variable.",
+      "remarks": "Check out this [video guide](https://youtu.be/F9meuMzvGJw) on usage example.  <br /><br />  To assign a display name for a character using this command consider using [binding the name to a custom variable](https://naninovel.com/guide/characters.html#display-names).  <br /><br />  The state of the UI is not serialized when saving the game, so make sure to prevent  player from saving the game when the UI is visible (eg, with `@hideText` command).",
       "params": [
         {
           "id": "VariableName",
@@ -1514,6 +1520,7 @@
       "id": "Lock",
       "localizable": false,
       "summary": "Sets an [unlockable item](https://naninovel.com/guide/unlockable-items.html) with the provided ID to `locked` state.",
+      "remarks": "The unlocked state of the items is stored in [global scope](https://naninovel.com/guide/state-management.html#global-state).<br />  In case item with the provided ID is not registered in the global state map,  the corresponding record will automatically be added.",
       "params": [
         {
           "id": "Id",
@@ -1564,6 +1571,7 @@
       "alias": "movie",
       "localizable": false,
       "summary": "Playes a movie with the provided name (path).",
+      "remarks": "Will fade-out the screen before playing the movie and fade back in after the play.  Playback can be canceled by activating a `cancel` input (`Esc` key by default).",
       "params": [
         {
           "id": "MovieName",
@@ -1614,6 +1622,7 @@
       "alias": "print",
       "localizable": true,
       "summary": "Resets the active printer, prints text message and waits for user input.",
+      "remarks": "This command is used under the hood when processing generic text lines, eg generic line `Kohaku: Hello World!` will be  automatically tranformed into `@print \"Hello World!\" actor:Kohaku` when parsing the naninovel scripts.<br />  Will cancel the printing (reveal the text at once) on `Continue` and `Skip` inputs.<br />  Will attempt to play corresponding voice clip when [Auto Voicing](https://naninovel.com/guide/voicing.html#auto-voicing) feature is enabled.<br />  Will attempt to add the printed message to [printer backlog](https://naninovel.com/guide/printer-backlog.html).<br />  Will attempt to change tint color of the characters, based on [Speaker Highlight](https://naninovel.com/guide/characters.html#speaker-highlight) feature.",
       "params": [
         {
           "id": "Text",
@@ -1806,6 +1815,7 @@
       "id": "ResetState",
       "localizable": false,
       "summary": "Resets state of all the [engine services](https://naninovel.com/guide/engine-services.html) and unloads (disposes)  all the resources loaded by Naninovel (textures, audio, video, etc); will basically revert to an empty initial engine state.",
+      "remarks": "The process is asynchronous and is masked with a loading screen ([ILoadingUI](https://naninovel.com/guide/ui-customization.html)).  <br /><br />  When [ResetStateOnLoad](https://naninovel.com/guide/configuration.html#state) is disabled in the configuration, you can use this command  to manually dispose unused resources to prevent memory leak issues.  <br /><br />  Be aware, that this command can not be undone (rewinded back).",
       "params": [
         {
           "id": "Wait",
@@ -1964,6 +1974,7 @@
       "alias": "set",
       "localizable": false,
       "summary": "Assigns result of a [script expression](https://naninovel.com/guide/script-expressions.html) to a [custom variable](https://naninovel.com/guide/custom-variables.html).",
+      "remarks": "Variable name should be alphanumeric (latin characters only) and can contain underscores, eg: `name`, `Char1Score`, `my_score`;  the names are case-insensitive, eg: `myscore` is equal to `MyScore`. If a variable with the provided name doesn't exist, it will be automatically created.  <br /><br />  It's possible to define multiple set expressions in one line by separating them with `;`. The expressions will be executed in sequence by the order of declaratation.  <br /><br />  Custom variables are stored in **local scope** by default. This means, that if you assign some variable in the course of gameplay  and player starts a new game or loads another saved game slot, where that variable wasn't assigned — the value will be lost.  If you wish to store the variable in **global scope** instead, prepend `G_` or `g_` to its name, eg: `G_FinishedMainRoute` or `g_total_score`.  <br /><br />  You can get and set custom variables in C# scripts via `CustomVariableManager` [engine service](https://naninovel.com/guide/engine-services.html).",
       "params": [
         {
           "id": "Expression",
@@ -2014,6 +2025,7 @@
       "alias": "sfx",
       "localizable": false,
       "summary": "Plays or modifies currently played SFX (sound effect) track with the provided name.",
+      "remarks": "Sound effect tracks are not looped by default.  When sfx track name (SfxPath) is not specified, will affect all the currently played tracks.  When invoked for a track that is already playing, the playback won't be affected (track won't start playing from the start),  but the specified parameters (volume and whether the track is looped) will be applied.",
       "params": [
         {
           "id": "SfxPath",
@@ -2211,6 +2223,7 @@
       "id": "Spawn",
       "localizable": false,
       "summary": "Spawns a prefab stored in project resources.",
+      "remarks": "If prefab has a `UnityEngine.MonoBehaviour` component attached the root object, and the component implements  a `Naninovel.Commands.Spawn.IParameterized` interface, will pass the specified `params` values after the spawn;  if the component implements `Naninovel.Commands.Spawn.IAwaitable` interface, command execution will wait for  the async completion task returned by the implementation.",
       "params": [
         {
           "id": "Path",
@@ -2309,6 +2322,7 @@
       "id": "StopBgm",
       "localizable": false,
       "summary": "Stops playing a BGM (background music) track with the provided name.",
+      "remarks": "When music track name (BgmPath) is not specified, will stop all the currently played tracks.",
       "params": [
         {
           "id": "BgmPath",
@@ -2418,6 +2432,7 @@
       "id": "StopSfx",
       "localizable": false,
       "summary": "Stops playing an SFX (sound effect) track with the provided name.",
+      "remarks": "When sound effect track name (SfxPath) is not specified, will stop all the currently played tracks.",
       "params": [
         {
           "id": "SfxPath",
@@ -2507,6 +2522,7 @@
       "alias": "style",
       "localizable": false,
       "summary": "Applies text style to the active printer.",
+      "remarks": "You can still use rich text formatting tags directly, but they will be printed  alongside normal text, which is not desirable in most cases.",
       "params": [
         {
           "id": "TextStyles",
@@ -2596,6 +2612,7 @@
       "id": "Unlock",
       "localizable": false,
       "summary": "Sets an [unlockable item](https://naninovel.com/guide/unlockable-items.html) with the provided ID to `unlocked` state.",
+      "remarks": "The unlocked state of the items is stored in [global scope](https://naninovel.com/guide/state-management.html#global-state).<br />  In case item with the provided ID is not registered in the global state map,  the corresponding record will automatically be added.",
       "params": [
         {
           "id": "Id",
