@@ -18,7 +18,8 @@
     "source.naniscript"
   ],
   "dependencies": {
-    "atom-languageclient": "0.9.9"
+    "atom-languageclient": "0.9.9",
+    "autocomplete": "git+https://github.com/facebookarchive/atom-ide-ui.git"
   },
   "package-deps": [
     "atom-ide-ui",
