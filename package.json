@@ -12,13 +12,15 @@
   "repository": "https://github.com/Elringus/NaninovelAtom",
   "license": "MIT",
   "engines": {
-    "atom": ">=1.0.0"
+    "atom": ">=1.0.0",
+    "node": "*"
   },
   "enhancedScopes": [
     "source.naniscript"
   ],
   "dependencies": {
-    "atom-languageclient": "0.9.9"
+    "atom-languageclient": "0.9.9",
+    "tree-sitter-naninovel": "^0.0.5"
   },
   "consumedServices": {
     "linter-indie": {
