@@ -7,12 +7,23 @@ fileTypes: [
   'nani'
 ]
 
+comments:
+	start: '; '
+
 scopes:
-  'label_name': 'constant'
+  'label_name': 'string'
   'comment': 'comment'
-  'define_name': 'variable'
-  'define_val': 'constant'
+  'define_name': 'keyword.control'
+#  'define_val': ''
   'command_name': 'entity.name.function'
-  'named_arg': 'variable.name'
+  'named_arg': 'constant'
   'unnamed_arg': 'meta.class'
+
+# Scope colors:
+#  green 	-> string
+#  azure 	-> tring.regexp
+#  violet 	-> keyword.control
+#  blue 	-> entity.name.function
+#  yellow 	-> meta.class
+#  brown 	-> constant
 
