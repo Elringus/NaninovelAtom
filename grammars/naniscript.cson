@@ -23,7 +23,7 @@ scopes:
 
 # Scope colors:
 #  green 	-> string
-#  azure 	-> tring.regexp
+#  azure 	-> string.regexp
 #  violet 	-> keyword.control
 #  blue 	-> entity.name.function
 #  yellow 	-> meta.class
