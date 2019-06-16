@@ -11,11 +11,13 @@ comments:
 	start: '; '
 
 scopes:
-  'label_name': 'string'
+  'label': 'string'
   'comment': 'comment'
   'define_name': 'keyword.control'
-#  'define_val': ''
+  'define_sign': 'keyword.control'
   'command_name': 'entity.name.function'
+  'command_line': 'entity.name.function'
+  'inline_command': 'entity.name.function'
   'named_arg': 'constant'
   'unnamed_arg': 'meta.class'
 
