@@ -11,15 +11,15 @@ comments:
 	start: '; '
 
 scopes:
-  'label': 'string'
   'comment': 'comment'
-  'define_name': 'keyword.control'
-  'define_sign': 'keyword.control'
-  'command_name': 'entity.name.function'
-  'command_line': 'entity.name.function'
-  'inline_command': 'entity.name.function'
-  'named_arg': 'constant'
-  'unnamed_arg': 'meta.class'
+  'define': 'keyword.control'
+  'define_value': 'meta.tag'
+  'label': 'string'
+  'command': 'entity.name.function'
+  'inlined_command': 'entity.name.function'
+  'command_param_id': 'constant'
+  'command_param_value': 'meta.class'
+  'expression': 'string.regexp'
 
 # Scope colors:
 #  green 	-> string
@@ -27,5 +27,6 @@ scopes:
 #  violet 	-> keyword.control
 #  blue 	-> entity.name.function
 #  yellow 	-> meta.class
-#  brown 	-> constant
+#  brown 	-> meta.link
+#  white  -> meta.tag
 
