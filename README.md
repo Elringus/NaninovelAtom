@@ -9,6 +9,8 @@ Open a folder with `.nani` files; the extension should automatically activate pr
 
 Opening a single file won't active the extension, as Atom is only able to start language server in "project mode".
 
+In case first line in a script is not affected by syntax highlighting, make sure the script file is saved with `UTF-8` encoding **without [BOM](https://en.wikipedia.org/wiki/Byte_order_mark)**.
+
 ## Etc
 
 Available scope names: https://github.com/psmitt/metalanguage/blob/master/examples/ScopeList.ScopeList
