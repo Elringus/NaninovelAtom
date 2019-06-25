@@ -20,7 +20,7 @@
   ],
   "dependencies": {
     "atom-languageclient": "0.9.9",
-    "tree-sitter-naninovel": "^0.1.0"
+    "tree-sitter-naninovel": "^0.1.2"
   },
   "consumedServices": {
     "linter-indie": {
