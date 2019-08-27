@@ -4,7 +4,7 @@
       "id": "AppendText",
       "alias": "append",
       "localizable": true,
-      "summary": "Appends provided text to an active printer.",
+      "summary": "Appends provided text to a text printer.",
       "remarks": "The entire text will be appended immediately, without triggering reveal effect or any other side-effects.",
       "params": [
         {
@@ -16,6 +16,17 @@
             "contentType": "string"
           },
           "summary": "The text to append."
+        },
+        {
+          "id": "PrinterId",
+          "alias": "printer",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the printer actor to use. Will use a a default one when not provided."
         },
         {
           "id": "Wait",
@@ -192,7 +203,7 @@
           "summary": "Position (in world space) to set for the modified actor."
         },
         {
-          "id": "IsVisible",
+          "id": "Visible",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -285,6 +296,17 @@
           "summary": "Path to the music track to play."
         },
         {
+          "id": "IntroBgmPath",
+          "alias": "intro",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Path to the intro music track to play once before the main track (not affected by the loop parameter)."
+        },
+        {
           "id": "Volume",
           "nameless": false,
           "required": false,
@@ -342,7 +364,7 @@
       "id": "AppendLineBreak",
       "alias": "br",
       "localizable": false,
-      "summary": "Adds a line break to the text in active printer.",
+      "summary": "Adds a line break to a text printer.",
       "params": [
         {
           "id": "Count",
@@ -353,6 +375,17 @@
             "contentType": "int"
           },
           "summary": "Number of line breaks to add."
+        },
+        {
+          "id": "PrinterId",
+          "alias": "printer",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the printer actor to use. Will use a default one when not provided."
         },
         {
           "id": "Wait",
@@ -402,7 +435,7 @@
             "kind": "array",
             "contentType": "float"
           },
-          "summary": "Local camera position offset in units by X and Y axis."
+          "summary": "Local camera position offset in units by X,Y,Z axes."
         },
         {
           "id": "Rotation",
@@ -422,7 +455,18 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Relatize camera zoom (orthographic size scale), in 0.0 to 1.0 range."
+          "summary": "Relatize camera zoom (orthographic size or field of view, depending on the render mode), in 0.0 to 1.0 range."
+        },
+        {
+          "id": "Orthographic",
+          "alias": "ortho",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the camera should render in orthographic (true) or perspective (false) mode."
         },
         {
           "id": "ToggleTypeNames",
@@ -494,7 +538,7 @@
             "kind": "namedLiteral",
             "contentType": "string"
           },
-          "summary": "ID of the actor to modify and the appearance to set.  When appearance is not provided, will use either a `Default` (is exists) or a random one."
+          "summary": "ID of the character to modify and the appearance to set.  When appearance is not provided, will use either a `Default` (is exists) or a random one."
         },
         {
           "id": "LookDirection",
@@ -570,7 +614,7 @@
           "summary": "Position (in world space) to set for the modified actor."
         },
         {
-          "id": "IsVisible",
+          "id": "Visible",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -649,7 +693,7 @@
       "id": "AddChoice",
       "alias": "choice",
       "localizable": true,
-      "summary": "Adds a choice option to an active (or default) choice handler actor.",
+      "summary": "Adds a choice option to a choice handler with the specified ID (or default one).",
       "remarks": "When `goto` parameter is not specified, will continue script execution from the next script line.",
       "params": [
         {
@@ -693,7 +737,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "ID of the choice handler to add choice for."
+          "summary": "ID of the choice handler to add choice for. Will use a default handler if not provided."
         },
         {
           "id": "GotoPath",
@@ -1140,10 +1184,10 @@
       "id": "HideActor",
       "alias": "hide",
       "localizable": false,
-      "summary": "Hides (removes from scene) an actor with provided ID.",
+      "summary": "Hides (makes invisible) an actor (character, background, text printer, choice handler, etc) with the provided ID.  In case mutliple actors with the same ID found (eg, a character and a printer), will affect all of them.",
       "params": [
         {
-          "id": "ActorName",
+          "id": "ActorId",
           "nameless": true,
           "required": true,
           "dataType": {
@@ -1267,10 +1311,20 @@
       ]
     },
     {
-      "id": "HideText",
+      "id": "HidePrinter",
       "localizable": false,
-      "summary": "Hides an active printer.",
+      "summary": "Hides a text printer.",
       "params": [
+        {
+          "id": "PrinterId",
+          "nameless": true,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the printer actor to use. Will use a default one when not provided."
+        },
         {
           "id": "Wait",
           "nameless": false,
@@ -1449,7 +1503,7 @@
       "alias": "input",
       "localizable": true,
       "summary": "Shows an input field UI where user can enter an arbitrary text.  Upon submit the entered text will be assigned to the specified custom variable.",
-      "remarks": "Check out this [video guide](https://youtu.be/F9meuMzvGJw) on usage example.  <br /><br />  To assign a display name for a character using this command consider using [binding the name to a custom variable](https://naninovel.com/guide/characters.html#display-names).  <br /><br />  The state of the UI is not serialized when saving the game, so make sure to prevent  player from saving the game when the UI is visible (eg, with `@hideText` command).",
+      "remarks": "Check out this [video guide](https://youtu.be/F9meuMzvGJw) on usage example.  <br /><br />  To assign a display name for a character using this command consider [binding the name to a custom variable](https://naninovel.com/guide/characters.html#display-names).",
       "params": [
         {
           "id": "VariableName",
@@ -1470,6 +1524,17 @@
             "contentType": "string"
           },
           "summary": "An optional summary text to show along with input field.  When the text contain spaces, wrap it in double quotes (`\"`).  In case you wish to include the double quotes in the text itself, escape them."
+        },
+        {
+          "id": "PredefinedValue",
+          "alias": "value",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A predefined value to set for the input field."
         },
         {
           "id": "PlayOnSubmit",
@@ -1567,6 +1632,88 @@
       ]
     },
     {
+      "id": "CameraLook",
+      "alias": "look",
+      "localizable": false,
+      "summary": "Activates/disables camera look mode, when player can offset the main camera with input devices  (eg, by moving a mouse or using gamepad analog stick).  Check [this video](https://youtu.be/rC6C9mA7Szw) for a quick demonstration of the command.",
+      "params": [
+        {
+          "id": "Enable",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether to enable or disable the camera look mode. Default: true."
+        },
+        {
+          "id": "LookZone",
+          "alias": "zone",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "A bound box with X,Y sizes in units from the initial camera position,  describing how far the camera can be moved. Default: 5,3."
+        },
+        {
+          "id": "LookSpeed",
+          "alias": "speed",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Camera movement speed (sensitivity) by X,Y axes. Default: 1.5,1."
+        },
+        {
+          "id": "Gravity",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether to automatically move camera to the initial position when the look input is not active  (eg, mouse is not moving or analog stick is in default position). Default: false."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
       "id": "PlayMovie",
       "alias": "movie",
       "localizable": false,
@@ -1621,8 +1768,8 @@
       "id": "PrintText",
       "alias": "print",
       "localizable": true,
-      "summary": "Resets the active printer, prints text message and waits for user input.",
-      "remarks": "This command is used under the hood when processing generic text lines, eg generic line `Kohaku: Hello World!` will be  automatically tranformed into `@print \"Hello World!\" actor:Kohaku` when parsing the naninovel scripts.<br />  Will cancel the printing (reveal the text at once) on `Continue` and `Skip` inputs.<br />  Will attempt to play corresponding voice clip when [Auto Voicing](https://naninovel.com/guide/voicing.html#auto-voicing) feature is enabled.<br />  Will attempt to add the printed message to [printer backlog](https://naninovel.com/guide/printer-backlog.html).<br />  Will attempt to change tint color of the characters, based on [Speaker Highlight](https://naninovel.com/guide/characters.html#speaker-highlight) feature.",
+      "summary": "Prints (reveals over time) specified text message using a text printer actor.",
+      "remarks": "This command is used under the hood when processing generic text lines, eg generic line `Kohaku: Hello World!` will be  automatically tranformed into `@print \"Hello World!\" author:Kohaku` when parsing the naninovel scripts.<br />  Will reset (clear) the printer before printing the new message by default; set `reset` parameter to *false* to prevent that and append the text instead.<br />  Will wait for user input before finishing the task by default; set `waitInput` parameter to *false* to return as soon as the text is fully revealed.<br />  Will cancel the printing (reveal the text at once) on `Continue` and `Skip` inputs.<br />",
       "params": [
         {
           "id": "Text",
@@ -1643,11 +1790,11 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "ID of the printer actor to use."
+          "summary": "ID of the printer actor to use. Will use a default one when not provided."
         },
         {
-          "id": "ActorId",
-          "alias": "actor",
+          "id": "AuthorId",
+          "alias": "author",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1655,6 +1802,17 @@
             "contentType": "string"
           },
           "summary": "ID of the actor, which should be associated with the printed message."
+        },
+        {
+          "id": "RevealSpeed",
+          "alias": "speed",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Text reveal speed multiplier; should be positive or zero. Setting to one will yield the default speed."
         },
         {
           "id": "ResetPrinter",
@@ -1713,20 +1871,62 @@
       ]
     },
     {
-      "id": "SetActivePrinter",
+      "id": "ModifyPrinter",
       "alias": "printer",
       "localizable": false,
-      "summary": "Sets printer with the provided ID active and de-activates all the others.",
+      "summary": "Modifies a [printer actor](https://naninovel.com/guide/text-printers.html).",
       "params": [
         {
-          "id": "PrinterId",
+          "id": "IdAndAppearance",
           "nameless": true,
-          "required": true,
+          "required": false,
           "dataType": {
-            "kind": "literal",
+            "kind": "namedLiteral",
             "contentType": "string"
           },
-          "summary": "ID of the printer to activate."
+          "summary": "ID of the printer to modify and the appearance to set.  When ID or appearance are not provided, will use default ones."
+        },
+        {
+          "id": "MakeDefault",
+          "alias": "default",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether to make the printer the default one.  Default printer will be subject of all the printer-related commands when `printer` parameter is not specified."
+        },
+        {
+          "id": "HideOther",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether to hide all the other printers."
+        },
+        {
+          "id": "ScenePosition",
+          "alias": "pos",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Position (relative to the screen borders, in percents) to set for the modified printer.  Position is described as follows: `0,0` is the bottom left, `50,50` is the center and `100,100` is the top right corner of the screen."
+        },
+        {
+          "id": "Visible",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether to show or hide the printer."
         },
         {
           "id": "Wait",
@@ -1854,8 +2054,18 @@
     {
       "id": "ResetText",
       "localizable": false,
-      "summary": "Clears printed text of active printer.",
+      "summary": "Resets (clears) the contents of a text printer.",
       "params": [
+        {
+          "id": "PrinterId",
+          "nameless": true,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the printer actor to use. Will use a default one when not provided."
+        },
         {
           "id": "Wait",
           "nameless": false,
@@ -1974,7 +2184,7 @@
       "alias": "set",
       "localizable": false,
       "summary": "Assigns result of a [script expression](https://naninovel.com/guide/script-expressions.html) to a [custom variable](https://naninovel.com/guide/custom-variables.html).",
-      "remarks": "Variable name should be alphanumeric (latin characters only) and can contain underscores, eg: `name`, `Char1Score`, `my_score`;  the names are case-insensitive, eg: `myscore` is equal to `MyScore`. If a variable with the provided name doesn't exist, it will be automatically created.  <br /><br />  It's possible to define multiple set expressions in one line by separating them with `;`. The expressions will be executed in sequence by the order of declaratation.  <br /><br />  Custom variables are stored in **local scope** by default. This means, that if you assign some variable in the course of gameplay  and player starts a new game or loads another saved game slot, where that variable wasn't assigned — the value will be lost.  If you wish to store the variable in **global scope** instead, prepend `G_` or `g_` to its name, eg: `G_FinishedMainRoute` or `g_total_score`.  <br /><br />  You can get and set custom variables in C# scripts via `CustomVariableManager` [engine service](https://naninovel.com/guide/engine-services.html).",
+      "remarks": "Variable name should be alphanumeric (latin characters only) and can contain underscores, eg: `name`, `Char1Score`, `my_score`;  the names are case-insensitive, eg: `myscore` is equal to `MyScore`. If a variable with the provided name doesn't exist, it will be automatically created.  <br /><br />  It's possible to define multiple set expressions in one line by separating them with `;`. The expressions will be executed in sequence by the order of declaratation.  <br /><br />  Custom variables are stored in **local scope** by default. This means, that if you assign some variable in the course of gameplay  and player starts a new game or loads another saved game slot, where that variable wasn't assigned — the value will be lost.  If you wish to store the variable in **global scope** instead, prepend `G_` or `g_` to its name, eg: `G_FinishedMainRoute` or `g_total_score`.  <br /><br />  In case variable name starts with `T_` or `t_` it's considered a reference to a value stored in 'Script' [managed text](https://naninovel.com/guide/managed-text.html) document.  Such variables can't be assiged and mostly used for referencing localizable text values.  <br /><br />  You can get and set custom variables in C# scripts via `CustomVariableManager` [engine service](https://naninovel.com/guide/engine-services.html).",
       "params": [
         {
           "id": "Expression",
@@ -1984,7 +2194,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "Set expression.  <br /><br />  The expression should be in the following format: `VariableName=ExpressionBody`, where `VariableName` is the name of the custom  variable to assign and `ExpressionBody` is a [script expression](https://naninovel.com/guide/script-expressions.html), the result of which should be assigned to the variable."
+          "summary": "Set expression.  <br /><br />  The expression should be in the following format: `VariableName=ExpressionBody`, where `VariableName` is the name of the custom  variable to assign and `ExpressionBody` is a [script expression](https://naninovel.com/guide/script-expressions.html), the result of which should be assigned to the variable.  <br /><br />  It's also possible to use increment and decrement unary operators, eg: `@set foo++`, `@set foo--`."
         },
         {
           "id": "Wait",
@@ -2092,10 +2302,70 @@
       ]
     },
     {
-      "id": "ShowText",
+      "id": "ShowActor",
+      "alias": "show",
       "localizable": false,
-      "summary": "Shows an active or default text printer.",
+      "summary": "Shows (makes visible) an actor (character, background, text printer, choice handler, etc) with the provided ID.  In case mutliple actors with the same ID found (eg, a character and a printer), will affect all of them.",
       "params": [
+        {
+          "id": "ActorId",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the actor to show."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "ShowPrinter",
+      "localizable": false,
+      "summary": "Shows a text printer.",
+      "params": [
+        {
+          "id": "PrinterId",
+          "nameless": true,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the printer actor to use. Will use a default one when not provided."
+        },
         {
           "id": "Wait",
           "nameless": false,
@@ -2180,10 +2450,9 @@
       ]
     },
     {
-      "id": "SkipNextWaitForInput",
-      "alias": "skipInput",
+      "id": "SkipInput",
       "localizable": false,
-      "summary": "Next call to `Naninovel.ScriptPlayer.EnableWaitingForInput` will be ignored.",
+      "summary": "Can be used in generic text lines to prevent activating `wait for input` mode when the text is printed.",
       "params": [
         {
           "id": "Wait",
@@ -2521,8 +2790,8 @@
       "id": "SetTextStyle",
       "alias": "style",
       "localizable": false,
-      "summary": "Applies text style to the active printer.",
-      "remarks": "You can still use rich text formatting tags directly, but they will be printed  alongside normal text, which is not desirable in most cases.",
+      "summary": "Permamently applies [text styles](https://naninovel.com/guide/text-printers.html#text-styles) to the contents of a text printer.",
+      "remarks": "You can also use rich text tags inside text messages to apply the styles selectively.",
       "params": [
         {
           "id": "TextStyles",
@@ -2532,7 +2801,18 @@
             "kind": "array",
             "contentType": "string"
           },
-          "summary": "Text formatting styles to apply.  Possible options: color hex code (eg, #ffaa00), bold, italic, px text size (eg 45)."
+          "summary": "Text formatting tags to apply. Angle brackets should be ommited, eg use `b` for &lt;b&gt; and `size=100` for &lt;size=100&gt;. Use `default` keyword to reset the style."
+        },
+        {
+          "id": "PrinterId",
+          "alias": "printer",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the printer actor to use. Will use a default one when not provided."
         },
         {
           "id": "Wait",
