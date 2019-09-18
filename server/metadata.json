@@ -1582,6 +1582,65 @@
       ]
     },
     {
+      "id": "LoadScene",
+      "localizable": false,
+      "summary": "Loads a [Unity scene](https://docs.unity3d.com/Manual/CreatingScenes.html) with the provided name.  Don't forget to add the required scenes to the [build settings](https://docs.unity3d.com/Manual/BuildSettings.html) to make them available for loading.",
+      "params": [
+        {
+          "id": "SceneName",
+          "nameless": true,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Name of the scene to load."
+        },
+        {
+          "id": "Additive",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether to load the scene additively, or unload any currently loaded scenes before loading the new one (default).  See the [load scene documentation](https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html) for more information."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
+          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
       "id": "Lock",
       "localizable": false,
       "summary": "Sets an [unlockable item](https://naninovel.com/guide/unlockable-items.html) with the provided ID to `locked` state.",
