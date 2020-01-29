@@ -1,32 +1,141 @@
 ﻿{
   "commands": [
     {
-      "id": "AppendText",
-      "alias": "append",
-      "localizable": true,
-      "summary": "Appends provided text to a text printer.",
-      "remarks": "The entire text will be appended immediately, without triggering reveal effect or any other side-effects.",
+      "id": "AnimateActor",
+      "alias": "animate",
+      "localizable": false,
+      "summary": "Animate properties of the actors with the specified IDs via key frames.  Key frames for the animated parameters are delimited with `|` literals.",
+      "remarks": "Be aware, that this command searches for actors with the provided IDs over all the actor managers,  and in case multiple actors with the same ID exist (eg, a character and a text printer), this will affect only the first found one.  <br /><br />  When running the animate commands in parallel (`wait` is set to false) the affected actors state can mutate unpredictably.  This could cause unexpected results when rolling back or performing other commands that affect state of the actor. Make sure to reset  affected properties of the animated actors (position, tint, appearance, etc) after the command finishes or use `@animate CharacterId`  (without any args) to stop the animation prematurely.",
       "params": [
         {
-          "id": "Text",
-          "nameless": true,
+          "id": "ActorIds",
+          "nameless": false,
           "required": true,
           "dataType": {
-            "kind": "literal",
+            "kind": "array",
             "contentType": "string"
           },
-          "summary": "The text to append."
+          "summary": "IDs of the actors to animate."
         },
         {
-          "id": "PrinterId",
-          "alias": "printer",
+          "id": "Loop",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether to loop the animation; make sure to set `wait` to false when loop is enabled,  otherwise script playback will loop indefinitely."
+        },
+        {
+          "id": "Appearance",
           "nameless": false,
           "required": false,
           "dataType": {
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "ID of the printer actor to use. Will use a a default one when not provided."
+          "summary": "Appearances to set for the animated actors."
+        },
+        {
+          "id": "Transition",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Type of the [transition effect](https://naninovel.com/guide/transition-effects.html) to use when animating appearance change (crossfade is used by default)."
+        },
+        {
+          "id": "Visibility",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Visibility status to set for the animated actors."
+        },
+        {
+          "id": "ScenePositionX",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Position values over X-axis (in 0 to 100 range, in percents from the left border of the screen) to set for the animated actors."
+        },
+        {
+          "id": "ScenePositionY",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Position values over Y-axis (in 0 to 100 range, in percents from the bottom border of the screen) to set for the animated actors."
+        },
+        {
+          "id": "PositionZ",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Position values over Z-axis (in world space) to set for the animated actors; while in ortho mode, can only be used for sorting."
+        },
+        {
+          "id": "Rotation",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Rotation values (over Z-axis) to set for the animated actors."
+        },
+        {
+          "id": "Scale",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Scale values (uniform) to set for the animated actors."
+        },
+        {
+          "id": "TintColor",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Tint colors to set for the animated actors.  <br /><br />  Strings that begin with `#` will be parsed as hexadecimal in the following way:  `#RGB` (becomes RRGGBB), `#RRGGBB`, `#RGBA` (becomes RRGGBBAA), `#RRGGBBAA`; when alpha is not specified will default to FF.  <br /><br />  Strings that do not begin with `#` will be parsed as literal colors, with the following supported:  red, cyan, blue, darkblue, lightblue, purple, yellow, lime, fuchsia, white, silver, grey, black, orange, brown, maroon, green, olive, navy, teal, aqua, magenta."
+        },
+        {
+          "id": "EasingTypeName",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Names of the easing functions to use for the animations.  <br /><br />  Available options: Linear, SmoothStep, Spring, EaseInQuad, EaseOutQuad, EaseInOutQuad, EaseInCubic, EaseOutCubic, EaseInOutCubic, EaseInQuart, EaseOutQuart, EaseInOutQuart, EaseInQuint, EaseOutQuint, EaseInOutQuint, EaseInSine, EaseOutSine, EaseInOutSine, EaseInExpo, EaseOutExpo, EaseInOutExpo, EaseInCirc, EaseOutCirc, EaseInOutCirc, EaseInBounce, EaseOutBounce, EaseInOutBounce, EaseInBack, EaseOutBack, EaseInOutBack, EaseInElastic, EaseOutElastic, EaseInOutElastic.  <br /><br />  When not specified, will use a default easing function set in the actor's manager configuration settings."
+        },
+        {
+          "id": "Durations",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Duration of the animations per key, in seconds. When not assigned, will use `time` parameter for all keys.  When assigned, but a value is missing, will use one from a previous key."
         },
         {
           "id": "Wait",
@@ -40,7 +149,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -51,7 +159,75 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "AppendText",
+      "alias": "append",
+      "localizable": true,
+      "summary": "Appends provided text to a text printer.",
+      "remarks": "The entire text will be appended immediately, without triggering reveal effect or any other side-effects.",
+      "params": [
+        {
+          "id": "Text",
+          "nameless": false,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "The text to append."
+        },
+        {
+          "id": "PrinterId",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the printer actor to use. Will use a a default one when not provided."
+        },
+        {
+          "id": "AuthorId",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the actor, which should be associated with the appended text."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -70,13 +246,23 @@
       "params": [
         {
           "id": "CharacterPositions",
-          "nameless": true,
+          "nameless": false,
           "required": false,
           "dataType": {
-            "kind": "map",
-            "contentType": "float"
+            "kind": "array",
+            "contentType": null
           },
           "summary": "A collection of character ID to scene X-axis position (relative to the left screen border, in percents) named values.  Position 0 relates to the left border and 100 to the right border of the screen; 50 is the center."
+        },
+        {
+          "id": "LookAtOrigin",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "When performing auto-arrange, controls whether to also make the characters look at the scene origin (enabled by default)."
         },
         {
           "id": "Wait",
@@ -90,7 +276,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -101,7 +286,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -117,39 +301,27 @@
       "alias": "back",
       "localizable": false,
       "summary": "Modifies a [background actor](https://naninovel.com/guide/backgrounds.html).",
-      "remarks": "Backgrounds are handled a bit differently from characters. Most of the time we'll only have  one background actor on scene, which will constantly transition to different appearances.  To free the user from always repeating same actor ID in scripts, we allow to  provide only the background appearance and transition type (optional) as a nameless parameter and assume that  `MainBackground` actor should be affected. When this is not the case, ID of the background actor can be explicitly  provided via the `id` parameter.",
+      "remarks": "Backgrounds are handled a bit differently from characters to better accommodate traditional VN game flow.  Most of the time you'll probably have a single background actor on scene, which will constantly transition to different appearances.  To remove the hassle of repeating same actor ID in scripts, it's possible to provide only  the background appearance and transition type (optional) as a nameless parameter assuming `MainBackground`  actor should be affected. When this is not the case, ID of the background actor can be explicitly provided via the `id` parameter.",
       "params": [
         {
           "id": "AppearanceAndTransition",
-          "nameless": true,
+          "nameless": false,
           "required": false,
           "dataType": {
             "kind": "namedLiteral",
             "contentType": "string"
           },
-          "summary": "Appearance to set for the modified background and name of the [transition effect](https://naninovel.com/guide/background-transition-effects.html) to use.  When transition is not provided, a cross-fade effect will be used by default."
+          "summary": "Appearance (or [pose](https://naninovel.com/guide/backgrounds.html#poses)) to set for the modified background and type of a [transition effect](https://naninovel.com/guide/transition-effects.html) to use.  When transition is not provided, a cross-fade effect will be used by default."
         },
         {
-          "id": "TransitionParams",
-          "alias": "params",
+          "id": "ScenePosition",
           "nameless": false,
           "required": false,
           "dataType": {
             "kind": "array",
             "contentType": "float"
           },
-          "summary": "Parameters of the transition effect."
-        },
-        {
-          "id": "CustomDissolveTexturePath",
-          "alias": "dissolve",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "string"
-          },
-          "summary": "Path to the [custom dissolve](https://naninovel.com/guide/background-transition-effects.html#custom-transition-effects) texture (path should be relative to a `Resources` folder).  Has effect only when the transition is set to `Custom` mode."
+          "summary": "Position (relative to the screen borders, in percents) to set for the modified actor.  Position is described as follows: `0,0` is the bottom left, `50,50` is the center and `100,100` is the top right corner of the screen.  Use Z-component (third member, eg `,,10`) to move (sort) by depth while in ortho mode."
         },
         {
           "id": "Id",
@@ -159,7 +331,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "ID of the actor to modify."
+          "summary": "ID of the actor to modify; specify `*` to affect all visible actors."
         },
         {
           "id": "Appearance",
@@ -169,38 +341,37 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "Appearance to set for the modified actor."
+          "summary": "Appearance (or pose) to set for the modified actor."
         },
         {
-          "id": "ScenePosition",
-          "alias": "pos",
+          "id": "Transition",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Type of the [transition effect](https://naninovel.com/guide/transition-effects.html) to use (crossfade is used by default)."
+        },
+        {
+          "id": "TransitionParams",
           "nameless": false,
           "required": false,
           "dataType": {
             "kind": "array",
             "contentType": "float"
           },
-          "summary": "Position (relative to the screen borders, in percents) to set for the modified actor.  Position is described as follows: `0,0` is the bottom left, `50,50` is the center and `100,100` is the top right corner of the screen."
+          "summary": "Parameters of the transition effect."
         },
         {
-          "id": "Scale",
+          "id": "DissolveTexturePath",
           "nameless": false,
           "required": false,
           "dataType": {
-            "kind": "array",
-            "contentType": "float"
+            "kind": "literal",
+            "contentType": "string"
           },
-          "summary": "Scale to set for the modified actor."
-        },
-        {
-          "id": "Position",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "array",
-            "contentType": "float"
-          },
-          "summary": "Position (in world space) to set for the modified actor."
+          "summary": "Path to the [custom dissolve](https://naninovel.com/guide/transition-effects.html#custom-transition-effects) texture (path should be relative to a `Resources` folder).  Has effect only when the transition is set to `Custom` mode."
         },
         {
           "id": "Visible",
@@ -213,6 +384,16 @@
           "summary": "Visibility status to set for the modified actor."
         },
         {
+          "id": "Position",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Position (in world space) to set for the modified actor.  Use Z-component (third member) to move (sort) by depth while in ortho mode."
+        },
+        {
           "id": "Rotation",
           "nameless": false,
           "required": false,
@@ -223,8 +404,17 @@
           "summary": "Rotation to set for the modified actor."
         },
         {
+          "id": "Scale",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Scale to set for the modified actor."
+        },
+        {
           "id": "TintColor",
-          "alias": "tint",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -235,7 +425,6 @@
         },
         {
           "id": "EasingTypeName",
-          "alias": "easing",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -256,7 +445,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -267,7 +455,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -282,12 +469,12 @@
       "id": "PlayBgm",
       "alias": "bgm",
       "localizable": false,
-      "summary": "Plays or modifies currently played BGM (background music) track with the provided name.",
+      "summary": "Plays or modifies currently played [BGM (background music)](https://naninovel.com/guide/audio.html#background-music) track with the provided name.",
       "remarks": "Music tracks are looped by default.  When music track name (BgmPath) is not specified, will affect all the currently played tracks.  When invoked for a track that is already playing, the playback won't be affected (track won't start playing from the start),  but the specified parameters (volume and whether the track is looped) will be applied.",
       "params": [
         {
           "id": "BgmPath",
-          "nameless": true,
+          "nameless": false,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -297,7 +484,6 @@
         },
         {
           "id": "IntroBgmPath",
-          "alias": "intro",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -327,6 +513,26 @@
           "summary": "Whether to play the track from beginning when it finishes."
         },
         {
+          "id": "FadeInTime",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Duration of the volume fade-in, in seconds (disabled by default);  doesn't have effect when modifying a playing track."
+        },
+        {
+          "id": "GroupPath",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Audio mixer [group path](https://docs.unity3d.com/ScriptReference/Audio.AudioMixer.FindMatchingGroups) that should be used when playing the audio."
+        },
+        {
           "id": "Wait",
           "nameless": false,
           "required": false,
@@ -338,7 +544,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -349,7 +554,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -368,7 +572,7 @@
       "params": [
         {
           "id": "Count",
-          "nameless": true,
+          "nameless": false,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -378,7 +582,6 @@
         },
         {
           "id": "PrinterId",
-          "alias": "printer",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -386,6 +589,16 @@
             "contentType": "string"
           },
           "summary": "ID of the printer actor to use. Will use a default one when not provided."
+        },
+        {
+          "id": "AuthorId",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the actor, which should be associated with the appended line break."
         },
         {
           "id": "Wait",
@@ -399,7 +612,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -410,7 +622,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -455,11 +666,10 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Relatize camera zoom (orthographic size or field of view, depending on the render mode), in 0.0 to 1.0 range."
+          "summary": "Relatize camera zoom (orthographic size or field of view, depending on the render mode), in 0.0 (no zoom) to 1.0 (full zoom) range."
         },
         {
           "id": "Orthographic",
-          "alias": "ortho",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -470,7 +680,6 @@
         },
         {
           "id": "ToggleTypeNames",
-          "alias": "toggle",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -481,7 +690,6 @@
         },
         {
           "id": "EasingTypeName",
-          "alias": "easing",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -502,7 +710,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -513,7 +720,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -532,28 +738,26 @@
       "params": [
         {
           "id": "IdAndAppearance",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "namedLiteral",
             "contentType": "string"
           },
-          "summary": "ID of the character to modify and the appearance to set.  When appearance is not provided, will use either a `Default` (is exists) or a random one."
+          "summary": "ID of the character to modify (specify `*` to affect all visible characters) and an appearance (or [pose](https://naninovel.com/guide/characters.html#poses)) to set.  When appearance is not provided, will use either a `Default` (is exists) or a random one."
         },
         {
           "id": "LookDirection",
-          "alias": "look",
           "nameless": false,
           "required": false,
           "dataType": {
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "Look direction of the actor; possible options: left, right, center."
+          "summary": "Look direction of the actor; supported values: left, right, center."
         },
         {
           "id": "AvatarTexturePath",
-          "alias": "avatar",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -563,6 +767,16 @@
           "summary": "Name (path) of the [avatar texture](https://naninovel.com/guide/characters.html#avatar-textures) to assign for the character.  Use `none` to remove (un-assign) avatar texture from the character."
         },
         {
+          "id": "ScenePosition",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Position (relative to the screen borders, in percents) to set for the modified actor.  Position is described as follows: `0,0` is the bottom left, `50,50` is the center and `100,100` is the top right corner of the screen.  Use Z-component (third member, eg `,,10`) to move (sort) by depth while in ortho mode."
+        },
+        {
           "id": "Id",
           "nameless": false,
           "required": false,
@@ -570,7 +784,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "ID of the actor to modify."
+          "summary": "ID of the actor to modify; specify `*` to affect all visible actors."
         },
         {
           "id": "Appearance",
@@ -580,38 +794,37 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "Appearance to set for the modified actor."
+          "summary": "Appearance (or pose) to set for the modified actor."
         },
         {
-          "id": "ScenePosition",
-          "alias": "pos",
+          "id": "Transition",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Type of the [transition effect](https://naninovel.com/guide/transition-effects.html) to use (crossfade is used by default)."
+        },
+        {
+          "id": "TransitionParams",
           "nameless": false,
           "required": false,
           "dataType": {
             "kind": "array",
             "contentType": "float"
           },
-          "summary": "Position (relative to the screen borders, in percents) to set for the modified actor.  Position is described as follows: `0,0` is the bottom left, `50,50` is the center and `100,100` is the top right corner of the screen."
+          "summary": "Parameters of the transition effect."
         },
         {
-          "id": "Scale",
+          "id": "DissolveTexturePath",
           "nameless": false,
           "required": false,
           "dataType": {
-            "kind": "array",
-            "contentType": "float"
+            "kind": "literal",
+            "contentType": "string"
           },
-          "summary": "Scale to set for the modified actor."
-        },
-        {
-          "id": "Position",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "array",
-            "contentType": "float"
-          },
-          "summary": "Position (in world space) to set for the modified actor."
+          "summary": "Path to the [custom dissolve](https://naninovel.com/guide/transition-effects.html#custom-transition-effects) texture (path should be relative to a `Resources` folder).  Has effect only when the transition is set to `Custom` mode."
         },
         {
           "id": "Visible",
@@ -624,6 +837,16 @@
           "summary": "Visibility status to set for the modified actor."
         },
         {
+          "id": "Position",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Position (in world space) to set for the modified actor.  Use Z-component (third member) to move (sort) by depth while in ortho mode."
+        },
+        {
           "id": "Rotation",
           "nameless": false,
           "required": false,
@@ -634,8 +857,17 @@
           "summary": "Rotation to set for the modified actor."
         },
         {
+          "id": "Scale",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Scale to set for the modified actor."
+        },
+        {
           "id": "TintColor",
-          "alias": "tint",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -646,7 +878,6 @@
         },
         {
           "id": "EasingTypeName",
-          "alias": "easing",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -667,7 +898,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -678,7 +908,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -693,12 +922,12 @@
       "id": "AddChoice",
       "alias": "choice",
       "localizable": true,
-      "summary": "Adds a choice option to a choice handler with the specified ID (or default one).",
+      "summary": "Adds a [choice](https://naninovel.com/guide/choices.html) option to a choice handler with the specified ID (or default one).",
       "remarks": "When `goto` parameter is not specified, will continue script execution from the next script line.",
       "params": [
         {
           "id": "ChoiceSummary",
-          "nameless": true,
+          "nameless": false,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -708,7 +937,6 @@
         },
         {
           "id": "ButtonPath",
-          "alias": "button",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -719,7 +947,6 @@
         },
         {
           "id": "ButtonPosition",
-          "alias": "pos",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -730,7 +957,6 @@
         },
         {
           "id": "HandlerId",
-          "alias": "handler",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -741,7 +967,6 @@
         },
         {
           "id": "GotoPath",
-          "alias": "goto",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -752,7 +977,6 @@
         },
         {
           "id": "SetExpression",
-          "alias": "set",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -760,6 +984,16 @@
             "contentType": "string"
           },
           "summary": "Set expression to execute when the choice is selected by user;  see [`@set`](https://naninovel.com/api/#set) command for syntax reference."
+        },
+        {
+          "id": "ShowHandler",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether to also show choice handler the choice is added for;  enabled by default."
         },
         {
           "id": "Wait",
@@ -773,7 +1007,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -784,7 +1017,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -812,7 +1044,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -823,7 +1054,64 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "ClearChoiceHandler",
+      "alias": "clearChoice",
+      "localizable": false,
+      "summary": "Removes all the choice options in the choice handler with the provided ID (or in default one, when ID is not specified;  or in all the existing handlers, when `*` is specified as ID) and (optionally) hides it (them).",
+      "params": [
+        {
+          "id": "HandlerId",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "ID of the choice handler to clear. Will use a default handler if not provided.  Specify `*` to clear all the existing handlers."
+        },
+        {
+          "id": "Hide",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether to also hide the affected printers."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -843,7 +1131,7 @@
       "params": [
         {
           "id": "Path",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -873,7 +1161,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -884,7 +1171,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -912,7 +1198,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -923,7 +1208,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -941,7 +1225,7 @@
       "params": [
         {
           "id": "Expression",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -961,7 +1245,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -972,7 +1255,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1000,7 +1282,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1011,7 +1292,84 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "FinishSceneTransition",
+      "alias": "finishTrans",
+      "localizable": false,
+      "summary": "Finishes scene transition started with [`@startTrans`](https://naninovel.com/api/#starttrans) command;  see the start command reference for more information and usage examples.",
+      "params": [
+        {
+          "id": "Transition",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Type of the [transition effect](https://naninovel.com/guide/transition-effects.html) to use (crossfade is used by default)."
+        },
+        {
+          "id": "TransitionParams",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Parameters of the transition effect."
+        },
+        {
+          "id": "DissolveTexturePath",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Path to the [custom dissolve](https://naninovel.com/guide/transition-effects.html#custom-transition-effects) texture (path should be relative to a `Resources` folder).  Has effect only when the transition is set to `Custom` mode."
+        },
+        {
+          "id": "EasingTypeName",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Name of the easing function to use for the modification.  <br /><br />  Available options: Linear, SmoothStep, Spring, EaseInQuad, EaseOutQuad, EaseInOutQuad, EaseInCubic, EaseOutCubic, EaseInOutCubic, EaseInQuart, EaseOutQuart, EaseInOutQuart, EaseInQuint, EaseOutQuint, EaseInOutQuint, EaseInSine, EaseOutSine, EaseInOutSine, EaseInExpo, EaseOutExpo, EaseInOutExpo, EaseInCirc, EaseOutCirc, EaseInOutCirc, EaseInBounce, EaseOutBounce, EaseInOutBounce, EaseInBack, EaseOutBack, EaseInOutBack, EaseInElastic, EaseOutElastic, EaseInOutElastic.  <br /><br />  When not specified, will use a default easing function set in the actor's manager configuration settings."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1026,11 +1384,11 @@
       "id": "SpawnFx",
       "alias": "fx",
       "localizable": false,
-      "summary": "Spawns a [special effect](https://naninovel.com/guide/special-effects.html) prefab stored in `./Resources/Naninovel/FX` resources folder.",
+      "summary": "Spawns a [special effect](https://naninovel.com/guide/special-effects.html) prefab stored in `./Resources/Naninovel/FX` resources folder.  When performed over an already spawned FX object, will update the spawn parameters instead.",
       "params": [
         {
           "id": "Path",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -1060,7 +1418,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1071,7 +1428,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1085,17 +1441,28 @@
     {
       "id": "Gosub",
       "localizable": false,
-      "summary": "Jumps the naninovel script playback to the provided path and saves the path to the global state;  [`@return`](https://naninovel.com/api/#return) commands use this info to redirect to command after the last invoked gosub command.  Resembles a function (subroutine) in a programming language, allowing to reuse a piece of naninovel script.  Useful for invoking a repeating set of commands multiple times.",
+      "summary": "Navigates naninovel script playback to the provided path and saves that path to global state;  [`@return`](https://naninovel.com/api/#return) commands use this info to redirect to command after the last invoked gosub command.  Designed to serve as a function (subroutine) in a programming language, allowing to reuse a piece of naninovel script.  Useful for invoking a repeating set of commands multiple times.",
+      "remarks": "It's possible to declare a gosub outside of the currently played script and use it from any other scripts;  by default state reset won't happen when you're loading another script to play a gosub or returning back to  prevent delays and loading screens. Be aware though, that all the resources referenced in gosub script will be  held until the next state reset.",
       "params": [
         {
           "id": "Path",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "namedLiteral",
             "contentType": "string"
           },
-          "summary": "Path to jump into in the following format: `ScriptName.LabelName`.  When label name is ommited, will play provided script from the start.  When script name is ommited, will attempt to find a label in the currently played script."
+          "summary": "Path to navigate into in the following format: `ScriptName.LabelName`.  When label name is ommited, will play provided script from the start.  When script name is ommited, will attempt to find a label in the currently played script."
+        },
+        {
+          "id": "ResetState",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "string"
+          },
+          "summary": "When specified, will reset the engine services state before loading a script (in case the path is leading to another script).  Specify `*` to reset all the services (except variable manager), or specify service names to exclude from reset.  By default, the state does not reset."
         },
         {
           "id": "Wait",
@@ -1109,7 +1476,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1120,7 +1486,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1134,17 +1499,27 @@
     {
       "id": "Goto",
       "localizable": false,
-      "summary": "Jumps the naninovel script playback to the provided path.  When the path leads to another (not the currently played) naninovel script, will also [reset state](https://naninovel.com/api/#resetstate)  before loading the target script, unless [ResetStateOnLoad](https://naninovel.com/guide/configuration.html#state) is disabled in the configuration.",
+      "summary": "Navigates naninovel script playback to the provided path.  When the path leads to another (not the currently played) naninovel script, will also [reset state](https://naninovel.com/api/#resetstate)  before loading the target script, unless [ResetStateOnLoad](https://naninovel.com/guide/configuration.html#state) is disabled in the configuration.",
       "params": [
         {
           "id": "Path",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "namedLiteral",
             "contentType": "string"
           },
-          "summary": "Path to jump into in the following format: `ScriptName.LabelName`.  When label name is ommited, will play provided script from the start.  When script name is ommited, will attempt to find a label in the currently played script."
+          "summary": "Path to navigate into in the following format: `ScriptName.LabelName`.  When label name is ommited, will play provided script from the start.  When script name is ommited, will attempt to find a label in the currently played script."
+        },
+        {
+          "id": "ResetState",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "string"
+          },
+          "summary": "When specified, will reset the engine services state before loading a script (in case the path is leading to another script).  Specify `*` to reset all the services (except variable manager), or specify service names to exclude from reset.  Specify `-` to force no reset (even if it's enabled by default in the configuration).  Default value is controlled by `Reset State On Load` option in engine configuration menu."
         },
         {
           "id": "Wait",
@@ -1158,7 +1533,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1169,7 +1543,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1188,7 +1561,7 @@
       "params": [
         {
           "id": "ActorId",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -1208,7 +1581,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1219,7 +1591,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1248,7 +1619,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1259,7 +1629,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1288,7 +1657,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1299,7 +1667,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1317,7 +1684,7 @@
       "params": [
         {
           "id": "PrinterId",
-          "nameless": true,
+          "nameless": false,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -1337,7 +1704,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1348,7 +1714,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1362,17 +1727,28 @@
     {
       "id": "HideUI",
       "localizable": false,
-      "summary": "Makes a [managed UI](https://naninovel.com/guide/ui-customization.html) with the provided prefab name invisible.",
+      "summary": "Makes a [UI element](https://naninovel.com/guide/user-interface.html#ui-customization) with the provided name invisible.  When no name is specified, will stop rendering (hide) the entire UI (including all the built-in UIs).",
+      "remarks": "When hiding the entire UI with this command and `allowToggle` parameter is false (default), user won't be able to re-show the UI  back with hotkeys or by clicking anywhere on the screen; use [`@showUI`](https://naninovel.com/api/#showui) command to make the UI ~~great~~ visible again.",
       "params": [
         {
-          "id": "UIPrefabName",
-          "nameless": true,
-          "required": true,
+          "id": "UIName",
+          "nameless": false,
+          "required": false,
           "dataType": {
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "Name of the managed UI prefab to hide."
+          "summary": "Name of the UI element to hide."
+        },
+        {
+          "id": "AllowToggle",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "When hiding the entire UI, controls whether to allow the user to re-show the UI with hotkeys or by clicking anywhere on the screen (false by default).  Has no effect when hiding a particular UI."
         },
         {
           "id": "Wait",
@@ -1386,7 +1762,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1397,7 +1772,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1412,7 +1786,7 @@
       "id": "WaitForInput",
       "alias": "i",
       "localizable": false,
-      "summary": "Holds script execution until user activates a `continue` input.  Shortcut for `@wait input`.",
+      "summary": "Holds script execution until user activates a `continue` input.  Shortcut for `@wait i`.",
       "params": [
         {
           "id": "Wait",
@@ -1426,7 +1800,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1437,7 +1810,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1456,7 +1828,7 @@
       "params": [
         {
           "id": "Expression",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -1476,7 +1848,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1487,7 +1858,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1507,7 +1877,7 @@
       "params": [
         {
           "id": "VariableName",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -1527,7 +1897,6 @@
         },
         {
           "id": "PredefinedValue",
-          "alias": "value",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1538,7 +1907,6 @@
         },
         {
           "id": "PlayOnSubmit",
-          "alias": "play",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1559,7 +1927,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1570,7 +1937,53 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "LipSync",
+      "localizable": false,
+      "summary": "Allows to force-stop the lip sync mouth animation for a character with the provided ID; when stopped, the animation  won't start again, until this command is used again to allow it.  The character should be able to receive the lip sync events (currently generic and Live2D implementations only).  See [characters guide](https://naninovel.com/guide/characters.html#lip-sync) for more information on lip sync feature.",
+      "params": [
+        {
+          "id": "CharIdAndAllow",
+          "nameless": false,
+          "required": true,
+          "dataType": {
+            "kind": "namedLiteral",
+            "contentType": "bool"
+          },
+          "summary": "Character ID followed by a boolean (true or false) on whether to halt or allow the lip sync animation."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1588,7 +2001,7 @@
       "params": [
         {
           "id": "SceneName",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -1618,7 +2031,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1629,7 +2041,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1648,13 +2059,13 @@
       "params": [
         {
           "id": "Id",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "ID of the unlockable item. Use `all` to lock all the registered unlockable items."
+          "summary": "ID of the unlockable item. Use `*` to lock all the registered unlockable items."
         },
         {
           "id": "Wait",
@@ -1668,7 +2079,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1679,7 +2089,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1708,7 +2117,6 @@
         },
         {
           "id": "LookZone",
-          "alias": "zone",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1719,7 +2127,6 @@
         },
         {
           "id": "LookSpeed",
-          "alias": "speed",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1750,7 +2157,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1761,7 +2167,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1781,7 +2186,7 @@
       "params": [
         {
           "id": "MovieName",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -1801,7 +2206,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1812,7 +2216,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1832,7 +2235,7 @@
       "params": [
         {
           "id": "Text",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -1842,7 +2245,6 @@
         },
         {
           "id": "PrinterId",
-          "alias": "printer",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1853,7 +2255,6 @@
         },
         {
           "id": "AuthorId",
-          "alias": "author",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1864,7 +2265,6 @@
         },
         {
           "id": "RevealSpeed",
-          "alias": "speed",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1875,7 +2275,6 @@
         },
         {
           "id": "ResetPrinter",
-          "alias": "reset",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1886,7 +2285,6 @@
         },
         {
           "id": "WaitForInput",
-          "alias": "waitInput",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1907,7 +2305,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1918,7 +2315,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1930,14 +2326,14 @@
       ]
     },
     {
-      "id": "ModifyPrinter",
+      "id": "ModifyTextPrinter",
       "alias": "printer",
       "localizable": false,
-      "summary": "Modifies a [printer actor](https://naninovel.com/guide/text-printers.html).",
+      "summary": "Modifies a [text printer actor](https://naninovel.com/guide/text-printers.html).",
       "params": [
         {
           "id": "IdAndAppearance",
-          "nameless": true,
+          "nameless": false,
           "required": false,
           "dataType": {
             "kind": "namedLiteral",
@@ -1947,7 +2343,6 @@
         },
         {
           "id": "MakeDefault",
-          "alias": "default",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1968,7 +2363,6 @@
         },
         {
           "id": "ScenePosition",
-          "alias": "pos",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1999,7 +2393,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2010,7 +2403,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2028,7 +2420,7 @@
       "params": [
         {
           "id": "InputEnabled",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -2048,7 +2440,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2059,7 +2450,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2071,10 +2461,9 @@
       ]
     },
     {
-      "id": "ResetState",
+      "id": "PurgeRollback",
       "localizable": false,
-      "summary": "Resets state of all the [engine services](https://naninovel.com/guide/engine-services.html) and unloads (disposes)  all the resources loaded by Naninovel (textures, audio, video, etc); will basically revert to an empty initial engine state.",
-      "remarks": "The process is asynchronous and is masked with a loading screen ([ILoadingUI](https://naninovel.com/guide/ui-customization.html)).  <br /><br />  When [ResetStateOnLoad](https://naninovel.com/guide/configuration.html#state) is disabled in the configuration, you can use this command  to manually dispose unused resources to prevent memory leak issues.  <br /><br />  Be aware, that this command can not be undone (rewinded back).",
+      "summary": "Prevents player from rolling back to the previous state snapshots.",
       "params": [
         {
           "id": "Wait",
@@ -2088,7 +2477,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2099,7 +2487,54 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "ResetState",
+      "localizable": false,
+      "summary": "Resets state of the [engine services](https://naninovel.com/guide/engine-services.html) and unloads (disposes)  all the resources loaded by Naninovel (textures, audio, video, etc); will basically revert to an empty initial engine state.",
+      "remarks": "The process is asynchronous and is masked with a loading screen ([ILoadingUI](https://naninovel.com/guide/user-interface.html#ui-customization)).  <br /><br />  When [ResetStateOnLoad](https://naninovel.com/guide/configuration.html#state) is disabled in the configuration, you can use this command  to manually dispose unused resources to prevent memory leak issues.  <br /><br />  Be aware, that this command can not be undone (rewinded back).",
+      "params": [
+        {
+          "id": "Exclude",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "string"
+          },
+          "summary": "Name of the [engine services](https://naninovel.com/guide/engine-services.html) (interfaces) to exclude from reset.  When specifying the parameter, consider always adding `ICustomVariableManager` to preserve the local variables."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2117,7 +2552,7 @@
       "params": [
         {
           "id": "PrinterId",
-          "nameless": true,
+          "nameless": false,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -2137,7 +2572,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2148,7 +2582,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2162,8 +2595,18 @@
     {
       "id": "Return",
       "localizable": false,
-      "summary": "Attempts to jump the naninovel script playback to the command after the last used @gosub.  When the target command is not in the currently played script, will also [reset state](https://naninovel.com/api/#resetstate)  before loading the target script, unless [ResetStateOnLoad](https://naninovel.com/guide/configuration.html#state) is disabled in the configuration.  See [`@gosub`](https://naninovel.com/api/#gosub) command summary for more info and usage examples.",
+      "summary": "Attempts to navigate naninovel script playback to a command after the last used [`@gosub`](https://naninovel.com/api/#gosub).  See [`@gosub`](https://naninovel.com/api/#gosub) command summary for more info and usage examples.",
       "params": [
+        {
+          "id": "ResetState",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "string"
+          },
+          "summary": "When specified, will reset the engine services state before returning to the initial script  from which the gosub was entered (in case it's not the currently played script).  Specify `*` to reset all the services (except variable manager), or specify service names to exclude from reset.  By default, the state does not reset."
+        },
         {
           "id": "Wait",
           "nameless": false,
@@ -2176,7 +2619,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2187,7 +2629,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2216,7 +2657,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2227,7 +2667,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2247,7 +2686,7 @@
       "params": [
         {
           "id": "Expression",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -2267,7 +2706,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2278,7 +2716,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2293,12 +2730,12 @@
       "id": "PlaySfx",
       "alias": "sfx",
       "localizable": false,
-      "summary": "Plays or modifies currently played SFX (sound effect) track with the provided name.",
+      "summary": "Plays or modifies currently played [SFX (sound effect)](https://naninovel.com/guide/audio.html#sound-effects) track with the provided name.",
       "remarks": "Sound effect tracks are not looped by default.  When sfx track name (SfxPath) is not specified, will affect all the currently played tracks.  When invoked for a track that is already playing, the playback won't be affected (track won't start playing from the start),  but the specified parameters (volume and whether the track is looped) will be applied.",
       "params": [
         {
           "id": "SfxPath",
-          "nameless": true,
+          "nameless": false,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -2327,6 +2764,26 @@
           "summary": "Whether to play the sound effect in a loop."
         },
         {
+          "id": "FadeInTime",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Duration of the volume fade-in, in seconds (disabled by default);  doesn't have effect when modifying a playing track."
+        },
+        {
+          "id": "GroupPath",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Audio mixer [group path](https://docs.unity3d.com/ScriptReference/Audio.AudioMixer.FindMatchingGroups) that should be used when playing the audio."
+        },
+        {
           "id": "Wait",
           "nameless": false,
           "required": false,
@@ -2338,7 +2795,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2349,7 +2805,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2368,7 +2823,7 @@
       "params": [
         {
           "id": "ActorId",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -2388,7 +2843,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2399,7 +2853,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2417,7 +2870,7 @@
       "params": [
         {
           "id": "PrinterId",
-          "nameless": true,
+          "nameless": false,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -2437,7 +2890,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2448,7 +2900,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2462,17 +2913,17 @@
     {
       "id": "ShowUI",
       "localizable": false,
-      "summary": "Makes a [managed UI](https://naninovel.com/guide/ui-customization.html) with the provided prefab name visible.",
+      "summary": "Makes a [UI element](https://naninovel.com/guide/user-interface.html) with the provided prefab name visible.  When no name is specified, will start rendering (show) the entire UI (in case it was hidden with [`@hideUI`](https://naninovel.com/api/#hideui)).",
       "params": [
         {
-          "id": "UIPrefabName",
-          "nameless": true,
-          "required": true,
+          "id": "UIName",
+          "nameless": false,
+          "required": false,
           "dataType": {
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "Name of the managed UI prefab to make visible."
+          "summary": "Name of the UI prefab to make visible."
         },
         {
           "id": "Wait",
@@ -2486,7 +2937,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2497,7 +2947,53 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "Skip",
+      "localizable": false,
+      "summary": "Allows to enable or disable script player \"skip\" mode.",
+      "params": [
+        {
+          "id": "Enable",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether to enable (default) or disable the skip mode."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2525,7 +3021,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2536,7 +3031,95 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "SlideActor",
+      "alias": "slide",
+      "localizable": false,
+      "summary": "Slides (moves over X-axis) actor (character, background, text printer or choice handler) with the provided ID and optionally changes actor appearance.",
+      "remarks": "Be aware, that this command searches for an actor with the provided ID over all the actor managers,  and in case multiple actors with the same ID exist (eg, a character and a text printer), this will affect only the first found one.",
+      "params": [
+        {
+          "id": "IdAndAppearance",
+          "nameless": false,
+          "required": true,
+          "dataType": {
+            "kind": "namedLiteral",
+            "contentType": "string"
+          },
+          "summary": "ID of the actor to slide and (optionally) appearance to set."
+        },
+        {
+          "id": "FromPositionX",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Position over X-axis (in 0 to 100 range, in percents from the left border of the screen) to slide the actor from.  When not provided, will use current actor position in case it's visible and a random off-screen position otherwise."
+        },
+        {
+          "id": "ToPositionX",
+          "nameless": false,
+          "required": true,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Position over X-axis (in 0 to 100 range, in percents from the left border of the screen) to slide the actor to."
+        },
+        {
+          "id": "Visible",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Change visibility status of the actor (show or hide).  When not set and target actor is hidden, will still automatically show it."
+        },
+        {
+          "id": "EasingTypeName",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Name of the easing function to use for the modifications.  <br /><br />  Available options: Linear, SmoothStep, Spring, EaseInQuad, EaseOutQuad, EaseInOutQuad, EaseInCubic, EaseOutCubic, EaseInOutCubic, EaseInQuart, EaseOutQuart, EaseInOutQuart, EaseInQuint, EaseOutQuint, EaseInOutQuint, EaseInSine, EaseOutSine, EaseInOutSine, EaseInExpo, EaseOutExpo, EaseInOutExpo, EaseInCirc, EaseOutCirc, EaseInOutCirc, EaseInBounce, EaseOutBounce, EaseInOutBounce, EaseInBack, EaseOutBack, EaseInOutBack, EaseInElastic, EaseOutElastic, EaseInOutElastic.  <br /><br />  When not specified, will use a default easing function set in the actor's manager configuration settings."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2550,12 +3133,12 @@
     {
       "id": "Spawn",
       "localizable": false,
-      "summary": "Spawns a prefab stored in project resources.",
+      "summary": "Spawns a prefab stored in project resources.  When performed over an already spawned object, will update the spawn parameters instead.",
       "remarks": "If prefab has a `UnityEngine.MonoBehaviour` component attached the root object, and the component implements  a `Naninovel.Commands.Spawn.IParameterized` interface, will pass the specified `params` values after the spawn;  if the component implements `Naninovel.Commands.Spawn.IAwaitable` interface, command execution will wait for  the async completion task returned by the implementation.",
       "params": [
         {
           "id": "Path",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -2585,7 +3168,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2596,7 +3178,45 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "A boolean [script expression](https://naninovel.com/guide/script-expressions.html), controlling whether this command should execute."
+        }
+      ]
+    },
+    {
+      "id": "StartSceneTransition",
+      "alias": "startTrans",
+      "localizable": false,
+      "summary": "Begins scene transition masking the real scene content with anything that is visible at the moment (except the UI).  When the new scene is ready, finish with [`@finishTrans`](https://naninovel.com/api/#finishtrans) command.",
+      "remarks": "The UI will be hidden and user input blocked while the transition is in progress.  You can change that by overriding the `ISceneTransitionUI`, which handles the transition process.<br /><br />  For the list of available transition effect options see [transition effects](https://naninovel.com/guide/transition-effects.html) guide.",
+      "params": [
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
+        },
+        {
+          "id": "Duration",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+        },
+        {
+          "id": "ConditionalExpression",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2624,7 +3244,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2635,7 +3254,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2654,7 +3272,7 @@
       "params": [
         {
           "id": "BgmPath",
-          "nameless": true,
+          "nameless": false,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -2674,7 +3292,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2685,7 +3302,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2704,7 +3320,7 @@
       "params": [
         {
           "id": "Path",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -2734,7 +3350,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2745,7 +3360,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2764,7 +3378,7 @@
       "params": [
         {
           "id": "SfxPath",
-          "nameless": true,
+          "nameless": false,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -2784,7 +3398,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2795,7 +3408,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2823,7 +3435,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2834,7 +3445,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2854,7 +3464,7 @@
       "params": [
         {
           "id": "TextStyles",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "array",
@@ -2864,7 +3474,6 @@
         },
         {
           "id": "PrinterId",
-          "alias": "printer",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2885,7 +3494,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2896,7 +3504,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2925,7 +3532,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2936,7 +3542,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2955,13 +3560,13 @@
       "params": [
         {
           "id": "Id",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "ID of the unlockable item. Use `all` to unlock all the registered unlockable items."
+          "summary": "ID of the unlockable item. Use `*` to unlock all the registered unlockable items."
         },
         {
           "id": "Wait",
@@ -2975,7 +3580,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2986,7 +3590,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3005,7 +3608,7 @@
       "params": [
         {
           "id": "VoicePath",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -3024,6 +3627,16 @@
           "summary": "Volume of the playback."
         },
         {
+          "id": "GroupPath",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "string"
+          },
+          "summary": "Audio mixer [group path](https://docs.unity3d.com/ScriptReference/Audio.AudioMixer.FindMatchingGroups) that should be used when playing the audio."
+        },
+        {
           "id": "Wait",
           "nameless": false,
           "required": false,
@@ -3035,7 +3648,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3046,7 +3658,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3064,7 +3675,7 @@
       "params": [
         {
           "id": "WaitMode",
-          "nameless": true,
+          "nameless": false,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -3084,7 +3695,6 @@
         },
         {
           "id": "Duration",
-          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3095,7 +3705,6 @@
         },
         {
           "id": "ConditionalExpression",
-          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
