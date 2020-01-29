@@ -9,7 +9,7 @@
       "params": [
         {
           "id": "ActorIds",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "array",
@@ -59,6 +59,7 @@
         },
         {
           "id": "ScenePositionX",
+          "alias": "posX",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -69,6 +70,7 @@
         },
         {
           "id": "ScenePositionY",
+          "alias": "posY",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -79,6 +81,7 @@
         },
         {
           "id": "PositionZ",
+          "alias": "posZ",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -109,6 +112,7 @@
         },
         {
           "id": "TintColor",
+          "alias": "tint",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -119,6 +123,7 @@
         },
         {
           "id": "EasingTypeName",
+          "alias": "easing",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -129,6 +134,7 @@
         },
         {
           "id": "Durations",
+          "alias": "times",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -149,6 +155,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -159,6 +166,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -178,7 +186,7 @@
       "params": [
         {
           "id": "Text",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -188,6 +196,7 @@
         },
         {
           "id": "PrinterId",
+          "alias": "printer",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -198,6 +207,7 @@
         },
         {
           "id": "AuthorId",
+          "alias": "author",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -218,6 +228,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -228,6 +239,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -246,7 +258,7 @@
       "params": [
         {
           "id": "CharacterPositions",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "array",
@@ -256,6 +268,7 @@
         },
         {
           "id": "LookAtOrigin",
+          "alias": "look",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -276,6 +289,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -286,6 +300,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -305,7 +320,7 @@
       "params": [
         {
           "id": "AppearanceAndTransition",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "namedLiteral",
@@ -315,6 +330,7 @@
         },
         {
           "id": "ScenePosition",
+          "alias": "pos",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -355,6 +371,7 @@
         },
         {
           "id": "TransitionParams",
+          "alias": "params",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -365,6 +382,7 @@
         },
         {
           "id": "DissolveTexturePath",
+          "alias": "dissolve",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -415,6 +433,7 @@
         },
         {
           "id": "TintColor",
+          "alias": "tint",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -425,6 +444,7 @@
         },
         {
           "id": "EasingTypeName",
+          "alias": "easing",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -445,6 +465,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -455,6 +476,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -474,7 +496,7 @@
       "params": [
         {
           "id": "BgmPath",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -484,6 +506,7 @@
         },
         {
           "id": "IntroBgmPath",
+          "alias": "intro",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -514,6 +537,7 @@
         },
         {
           "id": "FadeInTime",
+          "alias": "fade",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -524,6 +548,7 @@
         },
         {
           "id": "GroupPath",
+          "alias": "group",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -544,6 +569,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -554,6 +580,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -572,7 +599,7 @@
       "params": [
         {
           "id": "Count",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -582,6 +609,7 @@
         },
         {
           "id": "PrinterId",
+          "alias": "printer",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -592,6 +620,7 @@
         },
         {
           "id": "AuthorId",
+          "alias": "author",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -612,6 +641,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -622,6 +652,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -670,6 +701,7 @@
         },
         {
           "id": "Orthographic",
+          "alias": "ortho",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -680,6 +712,7 @@
         },
         {
           "id": "ToggleTypeNames",
+          "alias": "toggle",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -690,6 +723,7 @@
         },
         {
           "id": "EasingTypeName",
+          "alias": "easing",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -710,6 +744,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -720,6 +755,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -738,7 +774,7 @@
       "params": [
         {
           "id": "IdAndAppearance",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "namedLiteral",
@@ -748,6 +784,7 @@
         },
         {
           "id": "LookDirection",
+          "alias": "look",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -758,6 +795,7 @@
         },
         {
           "id": "AvatarTexturePath",
+          "alias": "avatar",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -768,6 +806,7 @@
         },
         {
           "id": "ScenePosition",
+          "alias": "pos",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -808,6 +847,7 @@
         },
         {
           "id": "TransitionParams",
+          "alias": "params",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -818,6 +858,7 @@
         },
         {
           "id": "DissolveTexturePath",
+          "alias": "dissolve",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -868,6 +909,7 @@
         },
         {
           "id": "TintColor",
+          "alias": "tint",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -878,6 +920,7 @@
         },
         {
           "id": "EasingTypeName",
+          "alias": "easing",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -898,6 +941,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -908,6 +952,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -927,7 +972,7 @@
       "params": [
         {
           "id": "ChoiceSummary",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -937,6 +982,7 @@
         },
         {
           "id": "ButtonPath",
+          "alias": "button",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -947,6 +993,7 @@
         },
         {
           "id": "ButtonPosition",
+          "alias": "pos",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -957,6 +1004,7 @@
         },
         {
           "id": "HandlerId",
+          "alias": "handler",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -967,6 +1015,7 @@
         },
         {
           "id": "GotoPath",
+          "alias": "goto",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -977,6 +1026,7 @@
         },
         {
           "id": "SetExpression",
+          "alias": "set",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -987,6 +1037,7 @@
         },
         {
           "id": "ShowHandler",
+          "alias": "show",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1007,6 +1058,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1017,6 +1069,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1044,6 +1097,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1054,6 +1108,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1072,7 +1127,7 @@
       "params": [
         {
           "id": "HandlerId",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -1102,6 +1157,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1112,6 +1168,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1131,7 +1188,7 @@
       "params": [
         {
           "id": "Path",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -1161,6 +1218,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1171,6 +1229,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1198,6 +1257,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1208,6 +1268,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1225,7 +1286,7 @@
       "params": [
         {
           "id": "Expression",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -1245,6 +1306,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1255,6 +1317,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1282,6 +1345,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1292,6 +1356,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1310,7 +1375,7 @@
       "params": [
         {
           "id": "Transition",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -1320,6 +1385,7 @@
         },
         {
           "id": "TransitionParams",
+          "alias": "params",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1330,6 +1396,7 @@
         },
         {
           "id": "DissolveTexturePath",
+          "alias": "dissolve",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1340,6 +1407,7 @@
         },
         {
           "id": "EasingTypeName",
+          "alias": "easing",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1360,6 +1428,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1370,6 +1439,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1388,7 +1458,7 @@
       "params": [
         {
           "id": "Path",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -1418,6 +1488,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1428,6 +1499,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1446,7 +1518,7 @@
       "params": [
         {
           "id": "Path",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "namedLiteral",
@@ -1456,6 +1528,7 @@
         },
         {
           "id": "ResetState",
+          "alias": "reset",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1476,6 +1549,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1486,6 +1560,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1503,7 +1578,7 @@
       "params": [
         {
           "id": "Path",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "namedLiteral",
@@ -1513,6 +1588,7 @@
         },
         {
           "id": "ResetState",
+          "alias": "reset",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1533,6 +1609,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1543,6 +1620,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1561,7 +1639,7 @@
       "params": [
         {
           "id": "ActorId",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -1581,6 +1659,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1591,6 +1670,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1619,6 +1699,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1629,6 +1710,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1657,6 +1739,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1667,6 +1750,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1684,7 +1768,7 @@
       "params": [
         {
           "id": "PrinterId",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -1704,6 +1788,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1714,6 +1799,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1732,7 +1818,7 @@
       "params": [
         {
           "id": "UIName",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -1762,6 +1848,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1772,6 +1859,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1800,6 +1888,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1810,6 +1899,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1828,7 +1918,7 @@
       "params": [
         {
           "id": "Expression",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -1848,6 +1938,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1858,6 +1949,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1877,7 +1969,7 @@
       "params": [
         {
           "id": "VariableName",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -1897,6 +1989,7 @@
         },
         {
           "id": "PredefinedValue",
+          "alias": "value",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1907,6 +2000,7 @@
         },
         {
           "id": "PlayOnSubmit",
+          "alias": "play",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1927,6 +2021,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1937,6 +2032,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1954,7 +2050,7 @@
       "params": [
         {
           "id": "CharIdAndAllow",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "namedLiteral",
@@ -1974,6 +2070,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -1984,6 +2081,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2001,7 +2099,7 @@
       "params": [
         {
           "id": "SceneName",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -2031,6 +2129,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2041,6 +2140,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2059,7 +2159,7 @@
       "params": [
         {
           "id": "Id",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -2079,6 +2179,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2089,6 +2190,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2117,6 +2219,7 @@
         },
         {
           "id": "LookZone",
+          "alias": "zone",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2127,6 +2230,7 @@
         },
         {
           "id": "LookSpeed",
+          "alias": "speed",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2157,6 +2261,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2167,6 +2272,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2186,7 +2292,7 @@
       "params": [
         {
           "id": "MovieName",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -2206,6 +2312,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2216,6 +2323,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2235,7 +2343,7 @@
       "params": [
         {
           "id": "Text",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -2245,6 +2353,7 @@
         },
         {
           "id": "PrinterId",
+          "alias": "printer",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2255,6 +2364,7 @@
         },
         {
           "id": "AuthorId",
+          "alias": "author",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2265,6 +2375,7 @@
         },
         {
           "id": "RevealSpeed",
+          "alias": "speed",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2275,6 +2386,7 @@
         },
         {
           "id": "ResetPrinter",
+          "alias": "reset",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2285,6 +2397,7 @@
         },
         {
           "id": "WaitForInput",
+          "alias": "waitInput",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2305,6 +2418,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2315,6 +2429,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2333,7 +2448,7 @@
       "params": [
         {
           "id": "IdAndAppearance",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "namedLiteral",
@@ -2343,6 +2458,7 @@
         },
         {
           "id": "MakeDefault",
+          "alias": "default",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2363,6 +2479,7 @@
         },
         {
           "id": "ScenePosition",
+          "alias": "pos",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2393,6 +2510,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2403,6 +2521,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2420,7 +2539,7 @@
       "params": [
         {
           "id": "InputEnabled",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -2440,6 +2559,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2450,6 +2570,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2477,6 +2598,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2487,6 +2609,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2505,7 +2628,7 @@
       "params": [
         {
           "id": "Exclude",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "array",
@@ -2525,6 +2648,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2535,6 +2659,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2552,7 +2677,7 @@
       "params": [
         {
           "id": "PrinterId",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -2572,6 +2697,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2582,6 +2708,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2599,6 +2726,7 @@
       "params": [
         {
           "id": "ResetState",
+          "alias": "reset",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2619,6 +2747,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2629,6 +2758,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2657,6 +2787,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2667,6 +2798,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2686,7 +2818,7 @@
       "params": [
         {
           "id": "Expression",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -2706,6 +2838,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2716,6 +2849,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2735,7 +2869,7 @@
       "params": [
         {
           "id": "SfxPath",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -2765,6 +2899,7 @@
         },
         {
           "id": "FadeInTime",
+          "alias": "fade",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2775,6 +2910,7 @@
         },
         {
           "id": "GroupPath",
+          "alias": "group",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2795,6 +2931,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2805,6 +2942,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2823,7 +2961,7 @@
       "params": [
         {
           "id": "ActorId",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -2843,6 +2981,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2853,6 +2992,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2870,7 +3010,7 @@
       "params": [
         {
           "id": "PrinterId",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -2890,6 +3030,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2900,6 +3041,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2917,7 +3059,7 @@
       "params": [
         {
           "id": "UIName",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -2937,6 +3079,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2947,6 +3090,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2964,7 +3108,7 @@
       "params": [
         {
           "id": "Enable",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -2984,6 +3128,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -2994,6 +3139,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3021,6 +3167,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3031,6 +3178,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3050,7 +3198,7 @@
       "params": [
         {
           "id": "IdAndAppearance",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "namedLiteral",
@@ -3060,6 +3208,7 @@
         },
         {
           "id": "FromPositionX",
+          "alias": "from",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3070,6 +3219,7 @@
         },
         {
           "id": "ToPositionX",
+          "alias": "to",
           "nameless": false,
           "required": true,
           "dataType": {
@@ -3090,6 +3240,7 @@
         },
         {
           "id": "EasingTypeName",
+          "alias": "easing",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3110,6 +3261,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3120,6 +3272,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3138,7 +3291,7 @@
       "params": [
         {
           "id": "Path",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -3168,6 +3321,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3178,6 +3332,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3207,6 +3362,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3217,6 +3373,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3244,6 +3401,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3254,6 +3412,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3272,7 +3431,7 @@
       "params": [
         {
           "id": "BgmPath",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -3292,6 +3451,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3302,6 +3462,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3320,7 +3481,7 @@
       "params": [
         {
           "id": "Path",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -3350,6 +3511,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3360,6 +3522,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3378,7 +3541,7 @@
       "params": [
         {
           "id": "SfxPath",
-          "nameless": false,
+          "nameless": true,
           "required": false,
           "dataType": {
             "kind": "literal",
@@ -3398,6 +3561,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3408,6 +3572,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3435,6 +3600,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3445,6 +3611,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3464,7 +3631,7 @@
       "params": [
         {
           "id": "TextStyles",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "array",
@@ -3474,6 +3641,7 @@
         },
         {
           "id": "PrinterId",
+          "alias": "printer",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3494,6 +3662,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3504,6 +3673,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3532,6 +3702,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3542,6 +3713,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3560,7 +3732,7 @@
       "params": [
         {
           "id": "Id",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -3580,6 +3752,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3590,6 +3763,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3608,7 +3782,7 @@
       "params": [
         {
           "id": "VoicePath",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -3628,6 +3802,7 @@
         },
         {
           "id": "GroupPath",
+          "alias": "group",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3648,6 +3823,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3658,6 +3834,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3675,7 +3852,7 @@
       "params": [
         {
           "id": "WaitMode",
-          "nameless": false,
+          "nameless": true,
           "required": true,
           "dataType": {
             "kind": "literal",
@@ -3695,6 +3872,7 @@
         },
         {
           "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
@@ -3705,6 +3883,7 @@
         },
         {
           "id": "ConditionalExpression",
+          "alias": "if",
           "nameless": false,
           "required": false,
           "dataType": {
