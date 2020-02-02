@@ -680,14 +680,24 @@
           "summary": "Local camera position offset in units by X,Y,Z axes."
         },
         {
-          "id": "Rotation",
+          "id": "Roll",
           "nameless": false,
           "required": false,
           "dataType": {
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Local camera rotation by Z-axis in angle degrees (0.0 to 360.0 or -180.0 to 180.0)."
+          "summary": "Local camera rotation by Z-axis in angle degrees (0.0 to 360.0 or -180.0 to 180.0).  The same as third component of `rotation` parameter; ignored when `rotation` is specified."
+        },
+        {
+          "id": "Rotation",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "float"
+          },
+          "summary": "Local camera rotation over X,Y,Z-axes in angle degrees (0.0 to 360.0 or -180.0 to 180.0)."
         },
         {
           "id": "Zoom",
@@ -2405,6 +2415,17 @@
             "contentType": "bool"
           },
           "summary": "Whether to wait for user input after finishing the printing task."
+        },
+        {
+          "id": "LineBreaks",
+          "alias": "br",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "int"
+          },
+          "summary": "Number of line breaks to prepend before the printed text."
         },
         {
           "id": "Wait",
