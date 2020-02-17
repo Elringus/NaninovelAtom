@@ -1582,20 +1582,20 @@
       ]
     },
     {
-      "id": "HideActor",
+      "id": "HideActors",
       "alias": "hide",
       "localizable": false,
-      "summary": "Hides (makes invisible) an actor (character, background, text printer, choice handler, etc) with the provided ID.  In case mutliple actors with the same ID found (eg, a character and a printer), will affect all of them.",
+      "summary": "Hides (makes invisible) actors (character, background, text printer, choice handler, etc) with the specified IDs.  In case mutliple actors with the same ID found (eg, a character and a printer), will affect only the first found one.",
       "params": [
         {
-          "id": "ActorId",
+          "id": "ActorIds",
           "nameless": true,
           "required": true,
           "dataType": {
-            "kind": "literal",
+            "kind": "array",
             "contentType": "string"
           },
-          "summary": "ID of the actor to hide."
+          "summary": "IDs of the actors to hide."
         },
         {
           "id": "Wait",
@@ -1763,18 +1763,18 @@
     {
       "id": "HideUI",
       "localizable": false,
-      "summary": "Makes a [UI element](https://naninovel.com/guide/user-interface.html#ui-customization) with the provided name invisible.  When no name is specified, will stop rendering (hide) the entire UI (including all the built-in UIs).",
+      "summary": "Makes [UI elements](https://naninovel.com/guide/user-interface.html#ui-customization) with the specified names invisible.  When no names are specified, will stop rendering (hide) the entire UI (including all the built-in UIs).",
       "remarks": "When hiding the entire UI with this command and `allowToggle` parameter is false (default), user won't be able to re-show the UI  back with hotkeys or by clicking anywhere on the screen; use [`@showUI`](https://naninovel.com/api/#showui) command to make the UI ~~great~~ visible again.",
       "params": [
         {
-          "id": "UIName",
+          "id": "UINames",
           "nameless": true,
           "required": false,
           "dataType": {
-            "kind": "literal",
+            "kind": "array",
             "contentType": "string"
           },
-          "summary": "Name of the UI element to hide."
+          "summary": "Name of the UI elements to hide."
         },
         {
           "id": "AllowToggle",
@@ -2289,7 +2289,7 @@
       "alias": "print",
       "localizable": true,
       "summary": "Prints (reveals over time) specified text message using a text printer actor.",
-      "remarks": "This command is used under the hood when processing generic text lines, eg generic line `Kohaku: Hello World!` will be  automatically tranformed into `@print \"Hello World!\" author:Kohaku` when parsing the naninovel scripts.<br />  Will reset (clear) the printer before printing the new message by default; set `reset` parameter to *false* to prevent that and append the text instead.<br />  Will wait for user input before finishing the task by default; set `waitInput` parameter to *false* to return as soon as the text is fully revealed.<br />  Will cancel the printing (reveal the text at once) on `Continue` and `Skip` inputs.<br />",
+      "remarks": "This command is used under the hood when processing generic text lines, eg generic line `Kohaku: Hello World!` will be  automatically tranformed into `@print \"Hello World!\" author:Kohaku` when parsing the naninovel scripts.<br />  Will reset (clear) the printer before printing the new message by default; set `reset` parameter to *false* or disable `Auto Reset` in the printer actor configuration to prevent that and append the text instead.<br />  Will make the printer default and hide other printers by default; set `default` parameter to *false* or disable `Auto Default` in the printer actor configuration to prevent that.<br />  Will wait for user input before finishing the task by default; set `waitInput` parameter to *false* or disable `Auto Wait` in the printer actor configuration to return as soon as the text is fully revealed.<br />",
       "params": [
         {
           "id": "Text",
@@ -2343,7 +2343,18 @@
             "kind": "literal",
             "contentType": "bool"
           },
-          "summary": "Whether to reset text of the printer before executing the printing task."
+          "summary": "Whether to reset text of the printer before executing the printing task.  Default value is controlled via `Auto Reset` property in the printer actor configuration menu."
+        },
+        {
+          "id": "DefaultPrinter",
+          "alias": "default",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether to make the printer default and hide other printers before executing the printing task.  Default value is controlled via `Auto Default` property in the printer actor configuration menu."
         },
         {
           "id": "WaitForInput",
@@ -2354,7 +2365,7 @@
             "kind": "literal",
             "contentType": "bool"
           },
-          "summary": "Whether to wait for user input after finishing the printing task."
+          "summary": "Whether to wait for user input after finishing the printing task.  Default value is controlled via `Auto Wait` property in the printer actor configuration menu."
         },
         {
           "id": "LineBreaks",
@@ -2365,7 +2376,7 @@
             "kind": "literal",
             "contentType": "int"
           },
-          "summary": "Number of line breaks to prepend before the printed text."
+          "summary": "Number of line breaks to prepend before the printed text.  Default value is controlled via `Auto Line Break` property in the printer actor configuration menu."
         },
         {
           "id": "Wait",
@@ -2915,20 +2926,20 @@
       ]
     },
     {
-      "id": "ShowActor",
+      "id": "ShowActors",
       "alias": "show",
       "localizable": false,
-      "summary": "Shows (makes visible) an actor (character, background, text printer, choice handler, etc) with the provided ID.  In case mutliple actors with the same ID found (eg, a character and a printer), will affect all of them.",
+      "summary": "Shows (makes visible) actors (character, background, text printer, choice handler, etc) with the specified IDs.  In case mutliple actors with the same ID found (eg, a character and a printer), will affect only the first found one.",
       "params": [
         {
-          "id": "ActorId",
+          "id": "ActorIds",
           "nameless": true,
           "required": true,
           "dataType": {
-            "kind": "literal",
+            "kind": "array",
             "contentType": "string"
           },
-          "summary": "ID of the actor to show."
+          "summary": "IDs of the actors to show."
         },
         {
           "id": "Wait",
@@ -3016,14 +3027,14 @@
     {
       "id": "ShowUI",
       "localizable": false,
-      "summary": "Makes a [UI element](https://naninovel.com/guide/user-interface.html) with the provided prefab name visible.  When no name is specified, will start rendering (show) the entire UI (in case it was hidden with [`@hideUI`](https://naninovel.com/api/#hideui)).",
+      "summary": "Makes [UI elements](https://naninovel.com/guide/user-interface.html) with the specified prefab names visible.  When no names are specified, will reveal the entire UI (in case it was hidden with [`@hideUI`](https://naninovel.com/api/#hideui)).",
       "params": [
         {
-          "id": "UIName",
+          "id": "UINames",
           "nameless": true,
           "required": false,
           "dataType": {
-            "kind": "literal",
+            "kind": "array",
             "contentType": "string"
           },
           "summary": "Name of the UI prefab to make visible."
