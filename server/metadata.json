@@ -133,15 +133,15 @@
           "summary": "Names of the easing functions to use for the animations.  <br /><br />  Available options: Linear, SmoothStep, Spring, EaseInQuad, EaseOutQuad, EaseInOutQuad, EaseInCubic, EaseOutCubic, EaseInOutCubic, EaseInQuart, EaseOutQuart, EaseInOutQuart, EaseInQuint, EaseOutQuint, EaseInOutQuint, EaseInSine, EaseOutSine, EaseInOutSine, EaseInExpo, EaseOutExpo, EaseInOutExpo, EaseInCirc, EaseOutCirc, EaseInOutCirc, EaseInBounce, EaseOutBounce, EaseInOutBounce, EaseInBack, EaseOutBack, EaseInOutBack, EaseInElastic, EaseOutElastic, EaseInOutElastic.  <br /><br />  When not specified, will use a default easing function set in the actor's manager configuration settings."
         },
         {
-          "id": "Durations",
-          "alias": "times",
+          "id": "Duration",
+          "alias": "time",
           "nameless": false,
           "required": false,
           "dataType": {
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "Duration of the animations per key, in seconds. When not assigned, will use `time` parameter for all keys.  When assigned, but a value is missing, will use one from a previous key."
+          "summary": "Duration of the animations per key, in seconds.  When a key value is missing, will use one from a previous key.  When not assigned, will use 0.35 seconds duration for all keys."
         },
         {
           "id": "Wait",
@@ -152,17 +152,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -227,17 +216,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -278,16 +256,6 @@
           "summary": "When performing auto-arrange, controls whether to also make the characters look at the scene origin (enabled by default)."
         },
         {
-          "id": "Wait",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "bool"
-          },
-          "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
           "id": "Duration",
           "alias": "time",
           "nameless": false,
@@ -296,7 +264,17 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+          "summary": "Duration (in seconds) of the arrangement animation. Default value: 0.35 seconds."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
           "id": "ConditionalExpression",
@@ -454,16 +432,6 @@
           "summary": "Name of the easing function to use for the modification.  <br /><br />  Available options: Linear, SmoothStep, Spring, EaseInQuad, EaseOutQuad, EaseInOutQuad, EaseInCubic, EaseOutCubic, EaseInOutCubic, EaseInQuart, EaseOutQuart, EaseInOutQuart, EaseInQuint, EaseOutQuint, EaseInOutQuint, EaseInSine, EaseOutSine, EaseInOutSine, EaseInExpo, EaseOutExpo, EaseInOutExpo, EaseInCirc, EaseOutCirc, EaseInOutCirc, EaseInBounce, EaseOutBounce, EaseInOutBounce, EaseInBack, EaseOutBack, EaseInOutBack, EaseInElastic, EaseOutElastic, EaseInOutElastic.  <br /><br />  When not specified, will use a default easing function set in the actor's manager configuration settings."
         },
         {
-          "id": "Wait",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "bool"
-          },
-          "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
           "id": "Duration",
           "alias": "time",
           "nameless": false,
@@ -472,7 +440,17 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+          "summary": "Duration (in seconds) of the modification. Default value: 0.35 seconds."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
           "id": "ConditionalExpression",
@@ -536,7 +514,7 @@
           "summary": "Whether to play the track from beginning when it finishes."
         },
         {
-          "id": "FadeInTime",
+          "id": "FadeInDuration",
           "alias": "fade",
           "nameless": false,
           "required": false,
@@ -544,7 +522,7 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Duration of the volume fade-in, in seconds (disabled by default);  doesn't have effect when modifying a playing track."
+          "summary": "Duration of the volume fade-in when starting playback, in seconds (0.0 by default);  doesn't have effect when modifying a playing track."
         },
         {
           "id": "GroupPath",
@@ -558,16 +536,6 @@
           "summary": "Audio mixer [group path](https://docs.unity3d.com/ScriptReference/Audio.AudioMixer.FindMatchingGroups) that should be used when playing the audio."
         },
         {
-          "id": "Wait",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "bool"
-          },
-          "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
           "id": "Duration",
           "alias": "time",
           "nameless": false,
@@ -576,7 +544,17 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+          "summary": "Duration (in seconds) of the modification. Default value: 0.35 seconds."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
           "id": "ConditionalExpression",
@@ -638,17 +616,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -743,16 +710,6 @@
           "summary": "Name of the easing function to use for the modification.  <br /><br />  Available options: Linear, SmoothStep, Spring, EaseInQuad, EaseOutQuad, EaseInOutQuad, EaseInCubic, EaseOutCubic, EaseInOutCubic, EaseInQuart, EaseOutQuart, EaseInOutQuart, EaseInQuint, EaseOutQuint, EaseInOutQuint, EaseInSine, EaseOutSine, EaseInOutSine, EaseInExpo, EaseOutExpo, EaseInOutExpo, EaseInCirc, EaseOutCirc, EaseInOutCirc, EaseInBounce, EaseOutBounce, EaseInOutBounce, EaseInBack, EaseOutBack, EaseInOutBack, EaseInElastic, EaseOutElastic, EaseInOutElastic.  <br /><br />  When not specified, will use a default easing function set in the camera configuration settings."
         },
         {
-          "id": "Wait",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "bool"
-          },
-          "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
           "id": "Duration",
           "alias": "time",
           "nameless": false,
@@ -761,7 +718,17 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+          "summary": "Duration (in seconds) of the modification. Default value: 0.35 seconds."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
           "id": "ConditionalExpression",
@@ -940,16 +907,6 @@
           "summary": "Name of the easing function to use for the modification.  <br /><br />  Available options: Linear, SmoothStep, Spring, EaseInQuad, EaseOutQuad, EaseInOutQuad, EaseInCubic, EaseOutCubic, EaseInOutCubic, EaseInQuart, EaseOutQuart, EaseInOutQuart, EaseInQuint, EaseOutQuint, EaseInOutQuint, EaseInSine, EaseOutSine, EaseInOutSine, EaseInExpo, EaseOutExpo, EaseInOutExpo, EaseInCirc, EaseOutCirc, EaseInOutCirc, EaseInBounce, EaseOutBounce, EaseInOutBounce, EaseInBack, EaseOutBack, EaseInOutBack, EaseInElastic, EaseOutElastic, EaseInOutElastic.  <br /><br />  When not specified, will use a default easing function set in the actor's manager configuration settings."
         },
         {
-          "id": "Wait",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "bool"
-          },
-          "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
           "id": "Duration",
           "alias": "time",
           "nameless": false,
@@ -958,7 +915,17 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+          "summary": "Duration (in seconds) of the modification. Default value: 0.35 seconds."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
           "id": "ConditionalExpression",
@@ -1057,16 +1024,6 @@
           "summary": "Whether to also show choice handler the choice is added for;  enabled by default."
         },
         {
-          "id": "Wait",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "bool"
-          },
-          "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
           "id": "Duration",
           "alias": "time",
           "nameless": false,
@@ -1075,7 +1032,17 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+          "summary": "Duration (in seconds) of the fade-in (reveal) animation. Default value: 0.35 seconds."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
           "id": "ConditionalExpression",
@@ -1104,17 +1071,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -1164,17 +1120,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -1227,17 +1172,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -1264,17 +1198,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -1315,17 +1238,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -1352,17 +1264,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -1427,16 +1328,6 @@
           "summary": "Name of the easing function to use for the modification.  <br /><br />  Available options: Linear, SmoothStep, Spring, EaseInQuad, EaseOutQuad, EaseInOutQuad, EaseInCubic, EaseOutCubic, EaseInOutCubic, EaseInQuart, EaseOutQuart, EaseInOutQuart, EaseInQuint, EaseOutQuint, EaseInOutQuint, EaseInSine, EaseOutSine, EaseInOutSine, EaseInExpo, EaseOutExpo, EaseInOutExpo, EaseInCirc, EaseOutCirc, EaseInOutCirc, EaseInBounce, EaseOutBounce, EaseInOutBounce, EaseInBack, EaseOutBack, EaseInOutBack, EaseInElastic, EaseOutElastic, EaseInOutElastic.  <br /><br />  When not specified, will use a default easing function set in the actor's manager configuration settings."
         },
         {
-          "id": "Wait",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "bool"
-          },
-          "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
           "id": "Duration",
           "alias": "time",
           "nameless": false,
@@ -1445,7 +1336,17 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+          "summary": "Duration (in seconds) of the transition. Default value: 0.35 seconds."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
           "id": "ConditionalExpression",
@@ -1498,17 +1399,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -1558,17 +1448,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -1598,16 +1477,6 @@
           "summary": "IDs of the actors to hide."
         },
         {
-          "id": "Wait",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "bool"
-          },
-          "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
           "id": "Duration",
           "alias": "time",
           "nameless": false,
@@ -1616,7 +1485,17 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+          "summary": "Duration (in seconds) of the fade animation. Default value: 0.35 seconds."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
           "id": "ConditionalExpression",
@@ -1638,16 +1517,6 @@
       "summary": "Hides (removes) all the actors (eg characters, backgrounds, text printers, choice handlers, etc) on scene.",
       "params": [
         {
-          "id": "Wait",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "bool"
-          },
-          "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
           "id": "Duration",
           "alias": "time",
           "nameless": false,
@@ -1656,7 +1525,17 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+          "summary": "Duration (in seconds) of the fade animation. Default value: 0.35 seconds."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
           "id": "ConditionalExpression",
@@ -1678,16 +1557,6 @@
       "summary": "Hides (removes) all the visible characters on scene.",
       "params": [
         {
-          "id": "Wait",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "bool"
-          },
-          "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
           "id": "Duration",
           "alias": "time",
           "nameless": false,
@@ -1696,7 +1565,17 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+          "summary": "Duration (in seconds) of the fade animation. Default value: 0.35 seconds."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
           "id": "ConditionalExpression",
@@ -1727,16 +1606,6 @@
           "summary": "ID of the printer actor to use. Will use a default one when not provided."
         },
         {
-          "id": "Wait",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "bool"
-          },
-          "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
           "id": "Duration",
           "alias": "time",
           "nameless": false,
@@ -1745,7 +1614,17 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+          "summary": "Duration (in seconds) of the fade animation. Default value: 0.35 seconds."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
           "id": "ConditionalExpression",
@@ -1797,17 +1676,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -1835,17 +1703,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -1885,17 +1742,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -1970,17 +1816,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -2017,17 +1852,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -2078,17 +1902,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -2126,17 +1939,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -2210,17 +2012,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -2259,17 +2050,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -2379,6 +2159,17 @@
           "summary": "Number of line breaks to prepend before the printed text.  Default value is controlled via `Auto Line Break` property in the printer actor configuration menu."
         },
         {
+          "id": "HideDuration",
+          "alias": "hideTime",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "When `default` is enabled, controls duration (in seconds) of the fade-out (hide) animation. Default value: 0.35 seconds."
+        },
+        {
           "id": "Wait",
           "nameless": false,
           "required": false,
@@ -2387,17 +2178,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -2471,16 +2251,6 @@
           "summary": "Whether to show or hide the printer."
         },
         {
-          "id": "Wait",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "bool"
-          },
-          "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
           "id": "Duration",
           "alias": "time",
           "nameless": false,
@@ -2489,7 +2259,17 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+          "summary": "Duration (in seconds) of the modification. Default value: 0.35 seconds."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
           "id": "ConditionalExpression",
@@ -2530,17 +2310,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -2567,17 +2336,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -2619,17 +2377,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -2666,17 +2413,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -2718,17 +2454,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -2756,17 +2481,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -2807,17 +2521,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -2870,7 +2573,7 @@
           "summary": "Whether to play the sound effect in a loop."
         },
         {
-          "id": "FadeInTime",
+          "id": "FadeInDuration",
           "alias": "fade",
           "nameless": false,
           "required": false,
@@ -2878,7 +2581,7 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Duration of the volume fade-in, in seconds (disabled by default);  doesn't have effect when modifying a playing track."
+          "summary": "Duration of the volume fade-in when starting playback, in seconds (0.0 by default);  doesn't have effect when modifying a playing track."
         },
         {
           "id": "GroupPath",
@@ -2892,16 +2595,6 @@
           "summary": "Audio mixer [group path](https://docs.unity3d.com/ScriptReference/Audio.AudioMixer.FindMatchingGroups) that should be used when playing the audio."
         },
         {
-          "id": "Wait",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "bool"
-          },
-          "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
           "id": "Duration",
           "alias": "time",
           "nameless": false,
@@ -2910,7 +2603,17 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+          "summary": "Duration (in seconds) of the modification. Default value: 0.35 seconds."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
           "id": "ConditionalExpression",
@@ -2942,16 +2645,6 @@
           "summary": "IDs of the actors to show."
         },
         {
-          "id": "Wait",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "bool"
-          },
-          "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
           "id": "Duration",
           "alias": "time",
           "nameless": false,
@@ -2960,7 +2653,17 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+          "summary": "Duration (in seconds) of the fade animation. Default value: 0.35 seconds."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
           "id": "ConditionalExpression",
@@ -2991,16 +2694,6 @@
           "summary": "ID of the printer actor to use. Will use a default one when not provided."
         },
         {
-          "id": "Wait",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "bool"
-          },
-          "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
           "id": "Duration",
           "alias": "time",
           "nameless": false,
@@ -3009,7 +2702,17 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+          "summary": "Duration (in seconds) of the fade animation. Default value: 0.35 seconds."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
           "id": "ConditionalExpression",
@@ -3050,17 +2753,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -3099,17 +2791,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -3136,17 +2817,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -3222,16 +2892,6 @@
           "summary": "Name of the easing function to use for the modifications.  <br /><br />  Available options: Linear, SmoothStep, Spring, EaseInQuad, EaseOutQuad, EaseInOutQuad, EaseInCubic, EaseOutCubic, EaseInOutCubic, EaseInQuart, EaseOutQuart, EaseInOutQuart, EaseInQuint, EaseOutQuint, EaseInOutQuint, EaseInSine, EaseOutSine, EaseInOutSine, EaseInExpo, EaseOutExpo, EaseInOutExpo, EaseInCirc, EaseOutCirc, EaseInOutCirc, EaseInBounce, EaseOutBounce, EaseInOutBounce, EaseInBack, EaseOutBack, EaseInOutBack, EaseInElastic, EaseOutElastic, EaseInOutElastic.  <br /><br />  When not specified, will use a default easing function set in the actor's manager configuration settings."
         },
         {
-          "id": "Wait",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "bool"
-          },
-          "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
           "id": "Duration",
           "alias": "time",
           "nameless": false,
@@ -3240,7 +2900,17 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
+          "summary": "Duration (in seconds) of the slide animation. Default value: 0.35 seconds."
+        },
+        {
+          "id": "Wait",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "bool"
+          },
+          "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
           "id": "ConditionalExpression",
@@ -3292,17 +2962,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -3333,17 +2992,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -3370,17 +3018,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -3412,6 +3049,17 @@
           "summary": "Path to the music track to stop."
         },
         {
+          "id": "FadeOutDuration",
+          "alias": "fade",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Duration of the volume fade-out before stopping playback, in seconds (0.35 by default)."
+        },
+        {
           "id": "Wait",
           "nameless": false,
           "required": false,
@@ -3420,17 +3068,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -3462,6 +3099,17 @@
           "summary": "Path to the sound effect to stop."
         },
         {
+          "id": "FadeOutDuration",
+          "alias": "fade",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Duration of the volume fade-out before stopping playback, in seconds (0.35 by default)."
+        },
+        {
           "id": "Wait",
           "nameless": false,
           "required": false,
@@ -3470,17 +3118,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -3509,17 +3146,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -3573,17 +3199,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -3600,7 +3215,7 @@
       "id": "ExitToTitle",
       "alias": "title",
       "localizable": false,
-      "summary": "Loads default engine state and shows `Naninovel.UI.ITitleUI`.",
+      "summary": "Resets engine state and shows `ITitleUI` UI (main menu).",
       "params": [
         {
           "id": "Wait",
@@ -3611,17 +3226,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -3661,17 +3265,6 @@
             "contentType": "bool"
           },
           "summary": "Whether the script player should wait for the async command execution before playing next command."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
@@ -3734,17 +3327,6 @@
           "summary": "Whether the script player should wait for the async command execution before playing next command."
         },
         {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
-        },
-        {
           "id": "ConditionalExpression",
           "alias": "if",
           "nameless": false,
@@ -3781,17 +3363,6 @@
             "contentType": "bool"
           },
           "summary": "Holds script execution until the specified wait condition."
-        },
-        {
-          "id": "Duration",
-          "alias": "time",
-          "nameless": false,
-          "required": false,
-          "dataType": {
-            "kind": "literal",
-            "contentType": "float"
-          },
-          "summary": "Determines for how long (in seconds) command should execute. Derived commands could (or could not) use this parameter."
         },
         {
           "id": "ConditionalExpression",
