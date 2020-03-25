@@ -1614,7 +1614,7 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Duration (in seconds) of the fade animation. Default value: 0.35 seconds."
+          "summary": "Duration (in seconds) of the hide animation.  Default value for each printer is set in the actor configuration."
         },
         {
           "id": "Wait",
@@ -2159,15 +2159,15 @@
           "summary": "Number of line breaks to prepend before the printed text.  Default value is controlled via `Auto Line Break` property in the printer actor configuration menu."
         },
         {
-          "id": "HideDuration",
-          "alias": "hideTime",
+          "id": "ChangeVisibilityDuration",
+          "alias": "fadeTime",
           "nameless": false,
           "required": false,
           "dataType": {
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "When `default` is enabled, controls duration (in seconds) of the fade-out (hide) animation. Default value: 0.35 seconds."
+          "summary": "Controls duration (in seconds) of the printers show and hide animations associated with this command.  Default value for each printer is set in the actor configuration."
         },
         {
           "id": "Wait",
@@ -2702,7 +2702,7 @@
             "kind": "literal",
             "contentType": "float"
           },
-          "summary": "Duration (in seconds) of the fade animation. Default value: 0.35 seconds."
+          "summary": "Duration (in seconds) of the show animation.  Default value for each printer is set in the actor configuration."
         },
         {
           "id": "Wait",
