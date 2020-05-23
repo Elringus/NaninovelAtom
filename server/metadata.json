@@ -699,6 +699,17 @@
           "summary": "Names of the components to toggle (enable if disabled and vice-versa). The components should be attached to the same gameobject as the camera.  This can be used to toggle [custom post-processing effects](https://naninovel.com/guide/special-effects.html#camera-effects)."
         },
         {
+          "id": "SetTypeNames",
+          "alias": "set",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": null
+          },
+          "summary": "Names of the components to enable or disable. The components should be attached to the same gameobject as the camera.  This can be used to explicitly enable or disable [custom post-processing effects](https://naninovel.com/guide/special-effects.html#camera-effects).  Specified components enabled state will override effect of `toggle` parameter."
+        },
+        {
           "id": "EasingTypeName",
           "alias": "easing",
           "nameless": false,
@@ -945,7 +956,7 @@
       "alias": "choice",
       "localizable": true,
       "summary": "Adds a [choice](https://naninovel.com/guide/choices.html) option to a choice handler with the specified ID (or default one).",
-      "remarks": "When `goto` parameter is not specified, will continue script execution from the next script line.",
+      "remarks": "When `goto`, `gosub` and `do` parameters are not specified, will continue script execution from the next script line.",
       "params": [
         {
           "id": "ChoiceSummary",
@@ -999,7 +1010,18 @@
             "kind": "namedLiteral",
             "contentType": "string"
           },
-          "summary": "Path to go when the choice is selected by user;  See [`@goto`](https://naninovel.com/api/#goto) command for the path format."
+          "summary": "Path to go when the choice is selected by user;  see [@goto] command for the path format."
+        },
+        {
+          "id": "GosubPath",
+          "alias": "gosub",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "namedLiteral",
+            "contentType": "string"
+          },
+          "summary": "Path to a subroutine to go when the choice is selected by user;  see [@gosub] command for the path format. When `goto` is assigned this parameter will be ignored."
         },
         {
           "id": "SetExpression",
@@ -1010,7 +1032,18 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "Set expression to execute when the choice is selected by user;  see [`@set`](https://naninovel.com/api/#set) command for syntax reference."
+          "summary": "Set expression to execute when the choice is selected by user;  see [@set] command for syntax reference."
+        },
+        {
+          "id": "OnSelected",
+          "alias": "do",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "array",
+            "contentType": "string"
+          },
+          "summary": "Script commands to execute when the choice is selected by user;  don't forget to escape commas inside list values to prevent them being treated as delimiters.  The commands will be invoked in order after `set`, `goto` and `gosub` are handled (if assigned)."
         },
         {
           "id": "ShowHandler",
@@ -1138,7 +1171,7 @@
       "id": "DestroySpawned",
       "alias": "despawn",
       "localizable": false,
-      "summary": "Destroys an object spawned with [`@spawn`](https://naninovel.com/api/#spawn) command.",
+      "summary": "Destroys an object spawned with [@spawn] command.",
       "remarks": "If prefab has a `UnityEngine.MonoBehaviour` component attached the root object, and the component implements  a `Naninovel.Commands.DestroySpawned.IParameterized` interface, will pass the specified `params` values before destroying the object;  if the component implements `Naninovel.Commands.DestroySpawned.IAwaitable` interface, command execution will wait for  the async completion task returned by the implementation before destroying the object.",
       "params": [
         {
@@ -1149,7 +1182,7 @@
             "kind": "literal",
             "contentType": "string"
           },
-          "summary": "Name (path) of the prefab resource to destroy.  A [`@spawn`](https://naninovel.com/api/#spawn) command with the same parameter is expected to be executed before."
+          "summary": "Name (path) of the prefab resource to destroy.  A [@spawn] command with the same parameter is expected to be executed before."
         },
         {
           "id": "Params",
@@ -1187,7 +1220,7 @@
     {
       "id": "Else",
       "localizable": false,
-      "summary": "Marks a branch of a conditional execution block,  which is always executed in case conditions of the opening [`@if`](https://naninovel.com/api/#if) and all the preceding [`@elseif`](https://naninovel.com/api/#elseif) (if any) commands are not met.  For usage examples see [conditional execution](https://naninovel.com/guide/naninovel-scripts.html#conditional-execution) guide.",
+      "summary": "Marks a branch of a conditional execution block,  which is always executed in case conditions of the opening [@if] and all the preceding [@elseif] (if any) commands are not met.  For usage examples see [conditional execution](https://naninovel.com/guide/naninovel-scripts.html#conditional-execution) guide.",
       "params": [
         {
           "id": "Wait",
@@ -1215,7 +1248,7 @@
     {
       "id": "ElseIf",
       "localizable": false,
-      "summary": "Marks a branch of a conditional execution block,  which is executed in case own condition is met (expression is evaluated to be true), while conditions of the opening [`@if`](https://naninovel.com/api/#if)  and all the preceding [`@elseif`](https://naninovel.com/api/#elseif) (if any) commands are not met.  For usage examples see [conditional execution](https://naninovel.com/guide/naninovel-scripts.html#conditional-execution) guide.",
+      "summary": "Marks a branch of a conditional execution block,  which is executed in case own condition is met (expression is evaluated to be true), while conditions of the opening [@if]  and all the preceding [@elseif] (if any) commands are not met.  For usage examples see [conditional execution](https://naninovel.com/guide/naninovel-scripts.html#conditional-execution) guide.",
       "params": [
         {
           "id": "Expression",
@@ -1253,7 +1286,7 @@
     {
       "id": "EndIf",
       "localizable": false,
-      "summary": "Closes an [`@if`](https://naninovel.com/api/#if) conditional execution block.  For usage examples see [conditional execution](https://naninovel.com/guide/naninovel-scripts.html#conditional-execution) guide.",
+      "summary": "Closes an [@if] conditional execution block.  For usage examples see [conditional execution](https://naninovel.com/guide/naninovel-scripts.html#conditional-execution) guide.",
       "params": [
         {
           "id": "Wait",
@@ -1282,7 +1315,7 @@
       "id": "FinishSceneTransition",
       "alias": "finishTrans",
       "localizable": false,
-      "summary": "Finishes scene transition started with [`@startTrans`](https://naninovel.com/api/#starttrans) command;  see the start command reference for more information and usage examples.",
+      "summary": "Finishes scene transition started with [@startTrans] command;  see the start command reference for more information and usage examples.",
       "params": [
         {
           "id": "Transition",
@@ -1364,7 +1397,7 @@
     {
       "id": "Gosub",
       "localizable": false,
-      "summary": "Navigates naninovel script playback to the provided path and saves that path to global state;  [`@return`](https://naninovel.com/api/#return) commands use this info to redirect to command after the last invoked gosub command.  Designed to serve as a function (subroutine) in a programming language, allowing to reuse a piece of naninovel script.  Useful for invoking a repeating set of commands multiple times.",
+      "summary": "Navigates naninovel script playback to the provided path and saves that path to global state;  [@return] commands use this info to redirect to command after the last invoked gosub command.  Designed to serve as a function (subroutine) in a programming language, allowing to reuse a piece of naninovel script.  Useful for invoking a repeating set of commands multiple times.",
       "remarks": "It's possible to declare a gosub outside of the currently played script and use it from any other scripts;  by default state reset won't happen when you're loading another script to play a gosub or returning back to  prevent delays and loading screens. Be aware though, that all the resources referenced in gosub script will be  held until the next state reset.",
       "params": [
         {
@@ -1643,7 +1676,7 @@
       "id": "HideUI",
       "localizable": false,
       "summary": "Makes [UI elements](https://naninovel.com/guide/user-interface.html#ui-customization) with the specified names invisible.  When no names are specified, will stop rendering (hide) the entire UI (including all the built-in UIs).",
-      "remarks": "When hiding the entire UI with this command and `allowToggle` parameter is false (default), user won't be able to re-show the UI  back with hotkeys or by clicking anywhere on the screen; use [`@showUI`](https://naninovel.com/api/#showui) command to make the UI ~~great~~ visible again.",
+      "remarks": "When hiding the entire UI with this command and `allowToggle` parameter is false (default), user won't be able to re-show the UI  back with hotkeys or by clicking anywhere on the screen; use [@showUI] command to make the UI ~~great~~ visible again.",
       "params": [
         {
           "id": "UINames",
@@ -1664,6 +1697,17 @@
             "contentType": "bool"
           },
           "summary": "When hiding the entire UI, controls whether to allow the user to re-show the UI with hotkeys or by clicking anywhere on the screen (false by default).  Has no effect when hiding a particular UI."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Duration (in seconds) of the hide animation.  When not specified, will use UI-specific duration."
         },
         {
           "id": "Wait",
@@ -1721,7 +1765,7 @@
       "id": "BeginIf",
       "alias": "if",
       "localizable": false,
-      "summary": "Marks the beginning of a conditional execution block.  Should always be closed with an [`@endif`](https://naninovel.com/api/#endif) command.  For usage examples see [conditional execution](https://naninovel.com/guide/naninovel-scripts.html#conditional-execution) guide.",
+      "summary": "Marks the beginning of a conditional execution block.  Should always be closed with an [@endif] command.  For usage examples see [conditional execution](https://naninovel.com/guide/naninovel-scripts.html#conditional-execution) guide.",
       "params": [
         {
           "id": "Expression",
@@ -2430,7 +2474,7 @@
     {
       "id": "Return",
       "localizable": false,
-      "summary": "Attempts to navigate naninovel script playback to a command after the last used [`@gosub`](https://naninovel.com/api/#gosub).  See [`@gosub`](https://naninovel.com/api/#gosub) command summary for more info and usage examples.",
+      "summary": "Attempts to navigate naninovel script playback to a command after the last used [@gosub].  See [@gosub] command summary for more info and usage examples.",
       "params": [
         {
           "id": "ResetState",
@@ -2730,7 +2774,7 @@
     {
       "id": "ShowUI",
       "localizable": false,
-      "summary": "Makes [UI elements](https://naninovel.com/guide/user-interface.html) with the specified prefab names visible.  When no names are specified, will reveal the entire UI (in case it was hidden with [`@hideUI`](https://naninovel.com/api/#hideui)).",
+      "summary": "Makes [UI elements](https://naninovel.com/guide/user-interface.html) with the specified prefab names visible.  When no names are specified, will reveal the entire UI (in case it was hidden with [@hideUI]).",
       "params": [
         {
           "id": "UINames",
@@ -2741,6 +2785,17 @@
             "contentType": "string"
           },
           "summary": "Name of the UI prefab to make visible."
+        },
+        {
+          "id": "Duration",
+          "alias": "time",
+          "nameless": false,
+          "required": false,
+          "dataType": {
+            "kind": "literal",
+            "contentType": "float"
+          },
+          "summary": "Duration (in seconds) of the show animation.  When not specified, will use UI-specific duration."
         },
         {
           "id": "Wait",
@@ -2978,7 +3033,7 @@
       "id": "StartSceneTransition",
       "alias": "startTrans",
       "localizable": false,
-      "summary": "Begins scene transition masking the real scene content with anything that is visible at the moment (except the UI).  When the new scene is ready, finish with [`@finishTrans`](https://naninovel.com/api/#finishtrans) command.",
+      "summary": "Begins scene transition masking the real scene content with anything that is visible at the moment (except the UI).  When the new scene is ready, finish with [@finishTrans] command.",
       "remarks": "The UI will be hidden and user input blocked while the transition is in progress.  You can change that by overriding the `ISceneTransitionUI`, which handles the transition process.<br /><br />  For the list of available transition effect options see [transition effects](https://naninovel.com/guide/transition-effects.html) guide.",
       "params": [
         {
