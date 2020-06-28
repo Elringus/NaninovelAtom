@@ -1142,7 +1142,7 @@
             "kind": "literal",
             "contentType": "bool"
           },
-          "summary": "Whether to also hide the affected printers."
+          "summary": "Whether to also hide the affected choice handlers."
         },
         {
           "id": "Wait",
@@ -1419,7 +1419,7 @@
             "kind": "array",
             "contentType": "string"
           },
-          "summary": "When specified, will reset the engine services state before loading a script (in case the path is leading to another script).  Specify `*` to reset all the services (except variable manager), or specify service names to exclude from reset.  By default, the state does not reset."
+          "summary": "When specified, will reset the engine services state before loading a script (in case the path is leading to another script).  Specify `*` to reset all the services, or specify service names to exclude from reset.  By default, the state does not reset."
         },
         {
           "id": "Wait",
@@ -1468,7 +1468,7 @@
             "kind": "array",
             "contentType": "string"
           },
-          "summary": "When specified, will reset the engine services state before loading a script (in case the path is leading to another script).  Specify `*` to reset all the services (except variable manager), or specify service names to exclude from reset.  Specify `-` to force no reset (even if it's enabled by default in the configuration).  Default value is controlled by `Reset State On Load` option in engine configuration menu."
+          "summary": "When specified, will control whether to reset the engine services state before loading a script (in case the path is leading to another script):<br />  - Specify `*` to reset all the services, except the ones with `DontResetAttribute`.<br />  - Specify service type names (separated by comma) to exclude from reset; all the other services will be reset, including the ones with `DontResetAttribute`.<br />  - Specify `-` to force no reset (even if it's enabled by default in the configuration)."
         },
         {
           "id": "Wait",
@@ -2408,7 +2408,7 @@
             "kind": "array",
             "contentType": "string"
           },
-          "summary": "Name of the [engine services](https://naninovel.com/guide/engine-services.html) (interfaces) to exclude from reset.  When specifying the parameter, consider always adding `ICustomVariableManager` to preserve the local variables."
+          "summary": "Name of the [engine services](https://naninovel.com/guide/engine-services.html) (interfaces) to exclude from reset.  Consider adding `ICustomVariableManager` to preserve the local variables."
         },
         {
           "id": "Wait",
@@ -2485,7 +2485,7 @@
             "kind": "array",
             "contentType": "string"
           },
-          "summary": "When specified, will reset the engine services state before returning to the initial script  from which the gosub was entered (in case it's not the currently played script).  Specify `*` to reset all the services (except variable manager), or specify service names to exclude from reset.  By default, the state does not reset."
+          "summary": "When specified, will reset the engine services state before returning to the initial script  from which the gosub was entered (in case it's not the currently played script).  Specify `*` to reset all the services, or specify service names to exclude from reset.  By default, the state does not reset."
         },
         {
           "id": "Wait",
