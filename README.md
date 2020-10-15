@@ -1,3 +1,5 @@
+**The Atom extension is deprecated as Atom itself is no longer actively developed/supported. Please use VS Code extension instead: https://naninovel.com/guide/ide-extension.html**
+
 ## Installation
 
 1. Install [`language-naniscript`](https://atom.io/packages/language-naniscript) package
